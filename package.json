@@ -1,0 +1,56 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "node_modules/.bin/expo start",
+    "android": "node_modules/.bin/expo start --android",
+    "ios": "node_modules/.bin/expo start --ios",
+    "eject": "node_modules/.bin/expo eject",
+    "test": "node node_modules/jest/bin/jest.js --watchAll"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "@expo/samples": "2.1.1",
+    "@expo/vector-icons": "^10.0.0",
+    "@react-native-community/async-storage": "^1.7.1",
+    "@unpourtous/react-native-search-list": "https://github.com/LVCarnevalli/react-native-search-list/tarball/master",
+    "expo": "^36.0.0",
+    "expo-analytics": "1.0.14",
+    "expo-asset": "~8.0.0",
+    "expo-font": "^8.0.0",
+    "firebase": "^5.6.0",
+    "lodash": "^4.17.11",
+    "react": "16.9.0",
+    "react-dom": "^16.12.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.1.tar.gz",
+    "react-native-circular-progress": "^1.3.6",
+    "react-native-easy-toast": "^1.1.0",
+    "react-native-elements": "^0.19.1",
+    "react-native-ignore-warnings": "^0.1.1",
+    "react-native-loading-spinner-overlay": "^1.0.1",
+    "react-native-parallax-swiper": "^1.1.7",
+    "react-native-svg": "9.13.3",
+    "react-native-swiper": "^1.5.14",
+    "react-native-web": "^0.12.0",
+    "react-navigation": "^2.18.2",
+    "react-process-string": "^1.2.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "5.10.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "babel-preset-expo": "^8.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "jest-expo": "^36.0.0",
+    "prettier": "^1.19.1"
+  },
+  "private": true
+}
