@@ -1,5 +1,5 @@
 import { Analytics, PageHit, Event } from 'expo-analytics';
-import Config from './src/constants/Config';
+import Config from '../constants/Config';
 
 export const pageHit = page => {
   const analytics = new Analytics(Config.GoogleAnalyticsConfig.trackingId);

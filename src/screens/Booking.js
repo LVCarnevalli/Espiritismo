@@ -61,7 +61,6 @@ class Booking extends React.Component {
   animate() {
     let progress = 0;
     this.setState({ progress });
-    console.log(this.props.question.result.length);
     progress =
       (this.props.question.resultBookingRead.length * 100) / this.props.question.result.length;
     if (this._isMounted) this.setState({ indeterminate: false, progress });

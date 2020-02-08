@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+  - "10.15.3"
+sudo: false
+
+branches:
+  only:
+    - master
+
+env:
+  global:
+    - EXPO_CLI_VERSION="3.11.19"
+    - YARN_VERSION="1.21.1"
+
+jobs:
+  include:
+    - stage: publish app
+      env:
+        - CACHE_NAME=publish YARN_CACHE="/home/travis/yarn_cache"
+      cache:
+        directories:
+          - $HOME/yarn_cache
+      before_install:
+        - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $YARN_VERSION
+        - export PATH="$HOME/.yarn/bin:$PATH"
+        - yarn global add expo-cli@$EXPO_CLI_VERSION
+      install:
+        - expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD --non-interactive
+        - yarn
+      script:
+        - expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD --non-interactive
+        - yarn
+        - expo publish
