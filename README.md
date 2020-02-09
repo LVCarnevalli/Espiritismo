@@ -11,11 +11,12 @@ O aplicativo Espiritismo têm o objetivo de agrupar conteúdos espíritas e traz
     <img alt="Espiritismo" src="https://lh3.googleusercontent.com/6-yXzxCEU35bL9ID3xNlelQOPz9MfGTJLr9jLuS3tv3s24AKbWYvOYjtYyhTTiNiPBrq=w720-h310-rw">
     <img alt="Espiritismo" src="https://lh3.googleusercontent.com/P_nGXam2zorqJzoYwI1WbUuKBAeFcgAxvblZKB-aFguCAOoGJJ8SLenJAKwDuauL3CM=w720-h310-rw">
 </p>    
-<p align="center">    
-    <a href="https://play.google.com/store/apps/details?id=br.verdi.espiritismo">
-      <img alt="Download on Google Play" src="https://play.google.com/intl/en_us/badges/images/badge_new.png" height=43>
-    </a>
-</p>
+
+## Aplicativos
+
+<a href="https://play.google.com/store/apps/details?id=br.verdi.espiritismo">
+  <img alt="Download on Google Play" src="https://play.google.com/intl/en_us/badges/images/badge_new.png" height=43>
+</a>
 
 ## Créditos
 [![](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/images/0)](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/links/0)[![](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/images/1)](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/links/1)[![](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/images/2)](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/links/2)[![](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/images/3)](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/links/3)[![](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/images/4)](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/links/4)[![](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/images/5)](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/links/5)[![](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/images/6)](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/links/6)[![](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/images/7)](https://sourcerer.io/fame/LVCarnevalli/LVCarnevalli/espiritismo/links/7)
