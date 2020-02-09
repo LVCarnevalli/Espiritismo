@@ -1,3 +1,5 @@
+// This code is a legacy and will be modified for good practice.
+
 import React from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {AppLoading} from 'expo';
