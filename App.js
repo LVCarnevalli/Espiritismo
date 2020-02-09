@@ -15,6 +15,8 @@ const {persistor, store} = configureStore();
 import ignoreWarnings from 'react-native-ignore-warnings';
 
 ignoreWarnings('Setting a timer');
+ignoreWarnings('componentWillReceiveProps has been renamed');
+ignoreWarnings('componentWillMount has been renamed');
 
 export default class App extends React.Component {
     state = {

@@ -5,10 +5,14 @@
     "android": "node_modules/.bin/expo start --android",
     "ios": "node_modules/.bin/expo start --ios",
     "eject": "node_modules/.bin/expo eject",
-    "test": "node node_modules/jest/bin/jest.js --watchAll"
+    "test-wait": "node node_modules/jest/bin/jest.js --watchAll",
+    "test": "node node_modules/jest/bin/jest.js --detectOpenHandles"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!redux-persist)/"
+    ]
   },
   "dependencies": {
     "@expo/samples": "2.1.1",
