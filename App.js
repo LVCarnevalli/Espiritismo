@@ -6,12 +6,12 @@ import {AppLoading} from 'expo';
 import { Asset } from 'expo-asset';
 import * as Icon from '@expo/vector-icons';
 import * as Font from 'expo-font';
-import Config from './src/constants/Config';
 import * as firebase from 'firebase';
 import {Provider} from 'react-redux';
 import configureStore from './src/store/Store';
 import {PersistGate} from 'redux-persist/integration/react';
 import AppNavigator from "./src/navigation/SwitchNavigator";
+import { FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN, FIREBASE_DATABASE_URL, FIREBASE_PROJECT_ID } from 'react-native-dotenv';
 
 const {persistor, store} = configureStore();
 import ignoreWarnings from 'react-native-ignore-warnings';
@@ -19,6 +19,7 @@ import ignoreWarnings from 'react-native-ignore-warnings';
 ignoreWarnings('Setting a timer');
 ignoreWarnings('componentWillReceiveProps has been renamed');
 ignoreWarnings('componentWillMount has been renamed');
+ignoreWarnings('componentWillUpdate has been renamed');
 
 export default class App extends React.Component {
     state = {
@@ -29,7 +30,12 @@ export default class App extends React.Component {
         super();
 
         if (!firebase.apps.length) {
-            firebase.initializeApp(Config.FirebaseConfig);
+            firebase.initializeApp({
+                apiKey: FIREBASE_API_KEY,
+                authDomain: FIREBASE_AUTH_DOMAIN,
+                databaseURL: FIREBASE_DATABASE_URL,
+                projectId: FIREBASE_PROJECT_ID,
+            });
         }
     }
 

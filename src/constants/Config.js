@@ -6,6 +6,6 @@ export default {
     projectId: process.env.FIREBASE_PROJECT_ID,
   },
   GoogleAnalyticsConfig: {
-    trackingId: process.env.FIREBASE_TRACKING_ID,
+    trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
   },
 };
