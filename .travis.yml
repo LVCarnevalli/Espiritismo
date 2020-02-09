@@ -9,10 +9,10 @@ branches:
 env:
   global:
     - YARN_VERSION="1.21.1"
-    - YARN_CACHE="/home/travis/yarn_cache"
 cache:
+  yarn: true
   directories:
-    - $HOME/yarn_cache
+    - node_modules
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $YARN_VERSION
   - export PATH="$HOME/.yarn/bin:$PATH"
@@ -24,8 +24,6 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script:
-    - expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD --non-interactive
-    - expo publish
+  script: expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD --non-interactive && expo publish
   on:
     tags: true
