@@ -1,3 +1,5 @@
+// This code is a legacy and will be modified for good practice.
+
 import { Analytics, PageHit, Event } from 'expo-analytics';
 import Config from '../constants/Config';
 

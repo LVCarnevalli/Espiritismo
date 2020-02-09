@@ -1,3 +1,5 @@
+// This code is a legacy and will be modified for good practice.
+
 import React from 'react';
 import { View, StyleSheet, Text, Linking, TouchableOpacity } from 'react-native';
 import { TextBold, TextNormal } from '../components/StyledText';

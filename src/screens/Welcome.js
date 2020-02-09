@@ -1,3 +1,5 @@
+// This code is a legacy and will be modified for good practice.
+
 import React from 'react';
 import { Text, View, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';

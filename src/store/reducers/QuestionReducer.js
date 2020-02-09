@@ -1,3 +1,5 @@
+// This code is a legacy and will be modified for good practice.
+
 import {
   LOAD_QUESTIONS_INIT,
   LOAD_QUESTIONS_SUCCESS,

@@ -1,3 +1,5 @@
+// This code is a legacy and will be modified for good practice.
+
 import React from 'react';
 import { ScrollView, View, StyleSheet, Image, Share, Text } from 'react-native';
 import { FormatText } from '../components/FormatText';

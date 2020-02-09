@@ -1,3 +1,5 @@
+// This code is a legacy and will be modified for good practice.
+
 import { FIRST_LAUNCH_INIT, OFFLINE_INIT } from '../actions/GlobalAction';
 
 const INITIAL_STATE = {

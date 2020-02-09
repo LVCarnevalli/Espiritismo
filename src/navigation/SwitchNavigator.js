@@ -1,9 +1,12 @@
+// This code is a legacy and will be modified for good practice.
+
 import React from 'react';
 import {
   createStackNavigator,
   createSwitchNavigator,
   createDrawerNavigator,
 } from 'react-navigation';
+
 import WelcomeScreen from '../screens/Welcome';
 import QuestionScreen from '../screens/Question';
 import SearchScreen from '../screens/Search';
