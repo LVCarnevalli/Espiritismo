@@ -12,7 +12,7 @@ import {
   readBookingQuestions,
   updateIndexBookingQuestions,
 } from '../store/actions/QuestionAction';
-import Swiper from 'react-native-swiper';
+import Swiper from 'react-native-swiper/src';
 import _ from 'lodash';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 import { Ionicons } from '@expo/vector-icons';

@@ -5,5 +5,7 @@ npm-debug.*
 *.p12
 *.key
 *.mobileprovision
+**/.idea/*
 .idea/*
 .env
+yarn-error.log
