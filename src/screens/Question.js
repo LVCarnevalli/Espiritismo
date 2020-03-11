@@ -15,8 +15,7 @@ import {
 import Swiper from 'react-native-swiper/src';
 import _ from 'lodash';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
-import { Ionicons } from '@expo/vector-icons';
-import Colors from '../constants/Colors';
+import { Feather } from '@expo/vector-icons';
 
 Array.prototype.flatMap = function(lambda) {
   return Array.prototype.concat.apply([], this.map(lambda));
@@ -26,21 +25,11 @@ class Question extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerTitle: navigation.getParam('title'),
-      headerTitleStyle: { fontWeight: '400', fontSize: 18 },
       headerRight: (
         <View style={{ flexDirection: 'row', flex: 1 }}>
           <View style={{ paddingRight: 10 }}>
             <Text onPress={() => navigation.getParam('shared')()}>
-              <Ionicons name="md-share" size={30} color={Colors.iconShare} />
-            </Text>
-          </View>
-        </View>
-      ),
-      headerLeft: (
-        <View style={{ flexDirection: 'row', flex: 1 }}>
-          <View style={{ paddingLeft: 10 }}>
-            <Text onPress={() => navigation.openDrawer()}>
-              <Ionicons name="md-menu" size={30} color={Colors.iconShare} />
+              <Feather name="menu" size={30} />
             </Text>
           </View>
         </View>
@@ -91,6 +80,7 @@ class Question extends React.Component {
     let items;
 
     let questionBooking = this.state.questionBooking;
+
     if (questionBooking) {
       items = questionBooking;
       this.props.navigation.setParams({ title: items[0].category });

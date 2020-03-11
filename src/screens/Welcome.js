@@ -45,7 +45,7 @@ class Welcome extends React.Component {
     if (this.props.offline && this.state.messageOffline) {
       message = 'SEM CONEXÃO';
     } else if (this.props.question.loading) {
-      message = 'O LIVRO ESTÁ ABRINDO';
+      message = 'CARREGANDO';
     } else if (this.props.question.error) {
       message = 'TENTE NOVAMENTE';
     } else {
@@ -58,7 +58,7 @@ class Welcome extends React.Component {
     if (this.props.question.error) {
       this.props.loadQuestions();
     } else {
-      this.props.navigation.navigate('Question');
+      this.props.navigation.navigate('Menu');
     }
   };
 
