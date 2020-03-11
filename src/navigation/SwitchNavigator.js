@@ -1,5 +1,5 @@
 import React from 'react';
-import { createSwitchNavigator, createStackNavigator } from 'react-navigation';
+import { createSwitchNavigator } from 'react-navigation';
 import WelcomeStack from './stack/WelcomeStack';
 import { QuestionStack, ReadQuestionStack, BookingQuestionStack } from './stack/QuestionStack';
 import SearchStack from './stack/SearchStack';
