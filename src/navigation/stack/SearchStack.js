@@ -1,5 +1,6 @@
 import { createStackNavigator } from 'react-navigation';
 import SearchScreen from '../../screens/Search';
+import React from 'react';
 
 const SearchStack = createStackNavigator(
   {
@@ -7,9 +8,9 @@ const SearchStack = createStackNavigator(
   },
   {
     headerMode: 'none',
-    navigationOptions: {
+    navigationOptions: ({ navigation }) => ({
       tabBarVisible: false,
-    },
+    }),
   }
 );
 

@@ -12,35 +12,6 @@ import * as GoogleAnalytics from '../services/GoogleAnalytics';
 class Booking extends React.Component {
   _isMounted = false;
 
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTitle: 'LEITURA',
-      headerTitleStyle: {
-        fontWeight: '400',
-        textAlign: 'center',
-        alignSelf: 'center',
-        flex: 1,
-        fontSize: 18,
-      },
-      headerTintColor: '#fff',
-      headerStyle: {
-        backgroundColor: '#2196f3',
-        elevation: 0,
-        borderBottomWidth: 0,
-      },
-      headerLeft: (
-        <View style={{ flexDirection: 'row', flex: 1 }}>
-          <View style={{ paddingLeft: 10 }}>
-            <Text onPress={() => navigation.openDrawer()}>
-              <Ionicons name="md-menu" size={30} color="#fff" />
-            </Text>
-          </View>
-        </View>
-      ),
-      headerRight: <View></View>,
-    };
-  };
-
   constructor(props) {
     super(props);
     GoogleAnalytics.pageHit('Booking');
@@ -103,14 +74,14 @@ class Booking extends React.Component {
           </AnimatedCircularProgress>
           <TextNormal
             style={{
-              fontSize: 22,
+              fontSize: 20,
               color: 'white',
               paddingLeft: 30,
               paddingRight: 30,
               paddingTop: 50,
               textAlign: 'left',
             }}>
-            Acompanhe o progresso da sua leitura, o modo leitura abrange o livro todo.
+            Acompanhe o progresso da sua leitura, o modo leitura abrange todas as questões do livro.
           </TextNormal>
         </View>
         <View style={styles.footer}>

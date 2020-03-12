@@ -11,6 +11,12 @@ import {Provider} from 'react-redux';
 import configureStore from './src/store/Store';
 import {PersistGate} from 'redux-persist/integration/react';
 import AppNavigator from "./src/navigation/SwitchNavigator";
+import {
+    ActionSheetProvider,
+    connectActionSheet,
+    ActionSheetOptions,
+    ActionSheetProps,
+} from '@expo/react-native-action-sheet';
 import { FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN, FIREBASE_DATABASE_URL, FIREBASE_PROJECT_ID } from 'react-native-dotenv';
 
 const {persistor, store} = configureStore();
@@ -54,7 +60,9 @@ export default class App extends React.Component {
                     {Platform.OS === 'ios' && <StatusBar barStyle="default"/>}
                     <Provider store={store}>
                         <PersistGate loading={null} persistor={persistor}>
-                            <AppNavigator/>
+                            <ActionSheetProvider>
+                                <AppNavigator/>
+                            </ActionSheetProvider>
                         </PersistGate>
                     </Provider>
                 </View>
@@ -69,13 +77,12 @@ export default class App extends React.Component {
                 require('./assets/images/BgBlood.png'),
                 require('./assets/images/BgMoon.png'),
                 require('./assets/images/IconGesture.png'),
-                require('./assets/images/IconAudioWave.png'),
-                require('./assets/images/IconCup.png'),
-                require('./assets/images/IconDetective.png'),
-                require('./assets/images/IconEdit.png'),
-                require('./assets/images/IconMonastery.png'),
-                require('./assets/images/IconNovel.png'),
-                require('./assets/images/IconOpenBook.png'),
+                require('./assets/images/IconLightbulb.png'),
+                require('./assets/images/IconQuestion.png'),
+                require('./assets/images/IconSearch.png'),
+                require('./assets/images/IconRead.png'),
+                require('./assets/images/IconSave.png'),
+                require('./assets/images/IconLove.png'),
             ]),
             Font.loadAsync({
                 ...Icon.Feather.font,

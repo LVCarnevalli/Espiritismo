@@ -25,7 +25,6 @@ export function updateIndexBookingQuestions(dispatch, index) {
 
 export const loadQuestions = () => dispatch => {
   dispatch({ type: LOAD_QUESTIONS_INIT });
-
   const connected = firebase.database().ref('.info/connected');
   connected.on('value', function(snap) {
     if (snap.val() === true) {

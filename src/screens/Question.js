@@ -1,9 +1,10 @@
 // This code is a legacy and will be modified for good practice.
 
 import React from 'react';
-import { ScrollView, View, StyleSheet, Image, Share, Text } from 'react-native';
+import { ScrollView, View, StyleSheet, Image, Share, Alert } from 'react-native';
 import { FormatText } from '../components/FormatText';
-import { TextLight, TextBold, TextNormal } from '../components/StyledText';
+import ActionSheet from '../components/ActionSheet';
+import { TextLight, TextBold } from '../components/StyledText';
 import Layout from '../constants/Layout';
 import { connect } from 'react-redux';
 import { updateNotFirstLaunch } from '../store/actions/GlobalAction';
@@ -15,7 +16,6 @@ import {
 import Swiper from 'react-native-swiper/src';
 import _ from 'lodash';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
-import { Feather } from '@expo/vector-icons';
 
 Array.prototype.flatMap = function(lambda) {
   return Array.prototype.concat.apply([], this.map(lambda));
@@ -26,13 +26,22 @@ class Question extends React.Component {
     return {
       headerTitle: navigation.getParam('title'),
       headerRight: (
-        <View style={{ flexDirection: 'row', flex: 1 }}>
-          <View style={{ paddingRight: 10 }}>
-            <Text onPress={() => navigation.getParam('shared')()}>
-              <Feather name="menu" size={30} />
-            </Text>
-          </View>
-        </View>
+        <ActionSheet
+          options={['Citações', 'Compartilhar']}
+          onSelection={index => {
+            if (index == 0) {
+              Alert.alert(
+                'Citações',
+                'As frases que estão logo após as perguntas é a resposta dos Espíritos, já o texto que segue em itálico são as considerações de Allan Kardec e as citações no final são notas do tradutor.\n\n' +
+                  'O aplicativo "Espiritismo" se baseia nas obras de Allan Kardec com a tradução e notas do J. Herculano Pires sem fins lucrativos. A utilização e leitura através do aplicativo não dispensa a leitura das obras de Allan Kardec.',
+                [],
+                { cancelable: true }
+              );
+            } else if (index == 1) {
+              navigation.getParam('shared')();
+            }
+          }}
+        />
       ),
     };
   };
@@ -193,20 +202,7 @@ class Question extends React.Component {
         <View style={styles.answerContainer}>
           <FormatText style={styles.answerText} value={item.answer} />
         </View>
-        <View style={{ paddingTop: 30 }}>
-          <View style={styles.obsContainer}>
-            <TextLight style={styles.obsText}>
-              As frases que estão logo após as perguntas é a resposta dos Espíritos, já o texto que
-              segue em itálico são as considerações de Allan Kardec e as citações no final são notas
-              do tradutor.
-            </TextLight>
-            <TextLight style={styles.obsText}>
-              O aplicativo "Espiritismo" se baseia nas obras de Allan Kardec com a tradução e notas
-              do J. Herculano Pires sem fins lucrativos. A utilização e leitura através do
-              aplicativo não dispensa a leitura das obras de Allan Kardec.
-            </TextLight>
-          </View>
-        </View>
+        <View style={{ paddingTop: 30 }} />
       </ScrollView>
     );
   };

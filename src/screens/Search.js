@@ -9,6 +9,7 @@ import SearchList, { HighlightableText } from '@unpourtous/react-native-search-l
 import { Ionicons } from '@expo/vector-icons';
 import * as _ from 'lodash';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
+import MenuIcon from '../components/MenuIcon';
 
 class Search extends React.Component {
   constructor(props) {
@@ -81,20 +82,15 @@ class Search extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#F00" barStyle="light-content" />
-        <View style={{ height: 8, backgroundColor: '#2196f3' }}></View>
         <SearchList
           data={this.state.dataSource}
           hideSectionList={true}
           renderRow={this.renderRow.bind(this)}
           renderEmptyResult={this.renderEmptyResult.bind(this)}
           renderBackButton={() => (
-            <View style={{ paddingLeft: 10 }}>
-              <Text onPress={() => this.props.navigation.openDrawer()}>
-                <Ionicons name="md-menu" size={30} color="#fff" />
-              </Text>
-            </View>
+            <MenuIcon navigation={this.props.navigation} iconStyle={{ color: '#FFFFFF' }} />
           )}
-          renderRightButton={() => <View style={{ paddingRight: 30 }}></View>}
+          renderRightButton={() => <View style={{ paddingRight: 40 }}></View>}
           renderEmpty={this.renderEmpty.bind(this)}
           rowHeight={50}
           toolbarBackgroundColor={'#2196f3'}

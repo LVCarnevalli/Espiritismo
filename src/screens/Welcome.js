@@ -40,6 +40,17 @@ class Welcome extends React.Component {
     }
   }
 
+  componentDidMount() {
+    if (
+      !this.props.offline &&
+      !this.state.messageOffline &&
+      !this.props.question.loading &&
+      !this.props.question.error
+    ) {
+      this.props.navigation.navigate('Menu');
+    }
+  }
+
   _messageNextButton() {
     let message;
     if (this.props.offline && this.state.messageOffline) {
@@ -90,13 +101,7 @@ class Welcome extends React.Component {
           <View style={styles.header} />
           <View style={styles.content}>
             <View style={styles.titleContainer}>
-              <TextExtraBold style={styles.titleText}>ESPIRITISMO</TextExtraBold>
-            </View>
-            <View style={styles.messageContainer}>
-              <TextNormal style={styles.messageText}>
-                Inicie o seu estudo agora mesmo com as perguntas e respostas da obra "O Livro dos
-                Espíritos".
-              </TextNormal>
+              <Text style={styles.titleText}>espiritismo</Text>
             </View>
           </View>
           <View style={styles.footer}>
@@ -154,10 +159,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   titleText: {
-    fontSize: 35,
+    fontSize: 50,
     color: 'white',
     paddingLeft: 30,
     paddingRight: 30,
+    textAlign: 'center',
+    fontFamily: 'grotes-sans-regular',
   },
   messageContainer: {
     flex: 2,
