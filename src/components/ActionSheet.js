@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { connectActionSheet } from '@expo/react-native-action-sheet';
 
@@ -31,9 +31,9 @@ class ActionSheet extends React.PureComponent {
     return (
       <View style={styles.container}>
         <View style={styles.subContainer}>
-          <Text onPress={this._showActionSheet}>
+          <TouchableOpacity onPress={this._showActionSheet}>
             <Feather name="menu" size={30} />
-          </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
