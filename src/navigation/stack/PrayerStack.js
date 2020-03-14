@@ -1,29 +1,30 @@
 import { createStackNavigator } from 'react-navigation';
-import BookingScreen from '../../screens/Booking';
+import PrayerScreen from '../../screens/Prayer';
 import MenuIcon from '../../components/MenuIcon';
 import React from 'react';
 import { View } from 'react-native';
 
-const BookingStack = createStackNavigator(
+const PrayerStack = createStackNavigator(
   {
-    Booking: BookingScreen,
+    Prayer: PrayerScreen,
   },
   {
     headerMode: 'screen',
+    cardStyle: { backgroundColor: '#363537' },
     navigationOptions: ({ navigation }) => ({
       tabBarVisible: false,
-      headerTitle: 'LEITURA',
+      headerTitle: 'PRECES',
       headerTitleStyle: {
         fontWeight: '400',
         textAlign: 'center',
         alignSelf: 'center',
         flex: 1,
         fontSize: 18,
-       fontFamily: 'open-sans-regular'
-    },
+        fontFamily: 'open-sans-regular'
+      },
       headerTintColor: '#fff',
       headerStyle: {
-        backgroundColor: '#2196f3',
+        backgroundColor: '#363537',
         elevation: 0,
         borderBottomWidth: 0,
       },
@@ -33,4 +34,4 @@ const BookingStack = createStackNavigator(
   }
 );
 
-export default BookingStack;
+export default PrayerStack;

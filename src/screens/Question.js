@@ -221,6 +221,14 @@ class Question extends React.Component {
         onIndexChanged={index => {
           GoogleAnalytics.eventSwipeQuestion();
 
+          if (this.props.isFirstLaunch) {
+            this.setState({
+              firstLaunch: false,
+            });
+
+            this.props.updateNotFirstLaunch();
+          }
+
           this.setState({
             actualQuestion: this.state.items[index],
             index: index,
@@ -254,13 +262,7 @@ class Question extends React.Component {
 
           // estudo aleatorio
           if (index > 0 && !this.state.questionBooking && !this.state.booking) {
-            if (this.props.isFirstLaunch) {
-              this.setState({
-                firstLaunch: false,
-              });
 
-              this.props.updateNotFirstLaunch();
-            }
 
             const actualQuestion = this.state.items[index - 1];
             const existQuestion =
@@ -328,7 +330,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   answerText: {
-    fontSize: 20,
+    fontSize: 18,
     color: 'black',
   },
   backgroundImage: {

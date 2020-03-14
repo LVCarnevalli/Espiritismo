@@ -8,7 +8,7 @@ const options = {
   cardStyle: { backgroundColor: '#FFFFFF' },
   navigationOptions: ({ navigation }) => ({
     tabBarVisible: false,
-    headerTitleStyle: { fontWeight: '400', fontSize: 18 },
+    headerTitleStyle: { fontWeight: '400', fontSize: 18, fontFamily: 'open-sans-regular'  },
     headerLeft: <MenuIcon navigation={navigation} />,
   }),
 };

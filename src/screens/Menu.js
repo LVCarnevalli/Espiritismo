@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList } from 'react-native';
+import { TextBold, TextNormal } from '../components/StyledText';
 
 class Menu extends React.Component {
   constructor(props) {
@@ -49,6 +50,7 @@ class Menu extends React.Component {
           color: '#6c5ce7',
           footer: 'Momento de silêncio',
           image: require('../../assets/images/IconSave.png'),
+          link: 'Prayer',
         },
         {
           id: 6,
@@ -88,15 +90,15 @@ class Menu extends React.Component {
                 }}>
                 <View style={[styles.cardHeader, styles.table]}>
                   <View style={styles.column}>
-                    <Text style={styles.title}>{item.title}</Text>
+                    <TextBold style={styles.title}>{item.title}</TextBold>
                   </View>
                   <View style={styles.column}>
-                    <Text style={styles.subTitle}>{item.subTitle}</Text>
+                    <TextNormal style={styles.subTitle}>{item.subTitle}</TextNormal>
                   </View>
                 </View>
                 <Image style={styles.cardImage} source={item.image} />
                 <View style={styles.cardFooter}>
-                  <Text style={styles.subTitle}>{item.footer}</Text>
+                  <TextNormal style={styles.subTitle}>{item.footer}</TextNormal>
                 </View>
               </TouchableOpacity>
             );

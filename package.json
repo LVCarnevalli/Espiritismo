@@ -35,6 +35,7 @@
     "react-native-elements": "^0.19.1",
     "react-native-ignore-warnings": "^0.1.1",
     "react-native-loading-spinner-overlay": "^1.0.1",
+    "react-native-modal": "^11.5.4",
     "react-native-parallax-swiper": "^1.1.7",
     "react-native-settings-list": "^1.8.0",
     "react-native-svg": "9.13.3",

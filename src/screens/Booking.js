@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { TextBold, TextItalic, TextNormal } from '../components/StyledText';
 import { Ionicons } from '@expo/vector-icons';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
-import { TextNormal } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 
 class Booking extends React.Component {
@@ -62,14 +62,14 @@ class Booking extends React.Component {
             rotation={0}
             backgroundColor="#3d5875">
             {fill => (
-              <Text
+              <TextNormal
                 style={{
                   fontSize: 30,
                   color: 'white',
                 }}>
                 {Math.floor(this.state.progress * Math.pow(10, 0)) / Math.pow(10, 0)}
                 {'%'}
-              </Text>
+              </TextNormal>
             )}
           </AnimatedCircularProgress>
           <TextNormal
@@ -91,9 +91,9 @@ class Booking extends React.Component {
               GoogleAnalytics.eventBookingQuestion();
               this.props.navigation.navigate('BookingQuestion', { booking: true });
             }}>
-            <Text style={styles.nextText}>
+            <TextBold style={styles.nextText}>
               {this.props.question.indexBookingRead > 0 ? 'CONTINUAR' : 'INICIAR'}
-            </Text>
+            </TextBold>
           </TouchableOpacity>
         </View>
       </View>

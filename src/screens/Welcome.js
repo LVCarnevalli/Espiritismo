@@ -3,7 +3,7 @@
 import React from 'react';
 import { Text, View, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { TextExtraBold, TextNormal } from '../components/StyledText';
+import { TextBold, TextNormal } from '../components/StyledText';
 import { bindActionCreators } from 'redux';
 import { loadQuestions, updateQuestions } from '../store/actions/QuestionAction';
 import Toast from 'react-native-easy-toast';
@@ -112,7 +112,7 @@ class Welcome extends React.Component {
                 styles.nextContainer,
                 { opacity: this.props.question.loading || this.props.offline ? 0.2 : 1 },
               ]}>
-              <Text style={styles.nextText}>{this._messageNextButton()}</Text>
+              <TextBold style={styles.nextText}>{this._messageNextButton()}</TextBold>
             </TouchableOpacity>
           </View>
         </ImageBackground>

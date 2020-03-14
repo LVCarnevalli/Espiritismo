@@ -1,7 +1,7 @@
 // This code is a legacy and will be modified for good practice.
 
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { TextBold, TextItalic, TextNormal } from './StyledText';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
@@ -51,9 +51,9 @@ export class FormatText extends React.Component {
         }
       } else {
         return (
-          <Text key={key} style={this.props.style}>
+          <TextNormal key={key} style={this.props.style}>
             {value.text}
-          </Text>
+          </TextNormal>
         );
       }
     });

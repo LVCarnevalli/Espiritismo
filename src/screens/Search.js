@@ -10,6 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 import * as _ from 'lodash';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 import MenuIcon from '../components/MenuIcon';
+import { TextNormal } from '../components/StyledText';
 
 class Search extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class Search extends React.Component {
             questionBooking: item.value.concat(_.slice(this.state.questions, index + 1)),
           });
         }}>
-        <View key={rowID} style={{ flex: 1, marginLeft: 20, height: 50, justifyContent: 'center' }}>
+        <View key={rowID} style={{ flex: 1, marginLeft: 20, height: 50, justifyContent: 'center',  }}>
           <HighlightableText
             matcher={item.matcher}
             text={item.searchStr}
@@ -59,7 +60,7 @@ class Search extends React.Component {
   renderEmpty() {
     return (
       <View style={styles.emptyDataSource}>
-        <Text style={{ color: '#979797', fontSize: 18, paddingTop: 20 }}> No Content </Text>
+        <TextNormal style={{ color: '#979797', fontSize: 18, paddingTop: 20 }}> No Content </TextNormal>
       </View>
     );
   }
@@ -67,13 +68,13 @@ class Search extends React.Component {
   renderEmptyResult(searchStr) {
     return (
       <View style={styles.emptySearchResult}>
-        <Text style={{ color: '#979797', fontSize: 18, paddingTop: 20 }}>
+        <TextNormal style={{ color: '#979797', fontSize: 18, paddingTop: 20 }}>
           {' '}
-          Não encontrado <Text style={{ color: '#171a23', fontSize: 18 }}>{searchStr}</Text>
-        </Text>
-        <Text style={{ color: '#979797', fontSize: 18, alignItems: 'center', paddingTop: 10 }}>
+          Não encontrado <TextNormal style={{ color: '#171a23', fontSize: 18 }}>{searchStr}</TextNormal>
+        </TextNormal>
+        <TextNormal style={{ color: '#979797', fontSize: 18, alignItems: 'center', paddingTop: 10 }}>
           Realize a busca novamente
-        </Text>
+        </TextNormal>
       </View>
     );
   }

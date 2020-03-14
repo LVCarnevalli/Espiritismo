@@ -10,6 +10,7 @@ const SearchStack = createStackNavigator(
     headerMode: 'none',
     navigationOptions: ({ navigation }) => ({
       tabBarVisible: false,
+
     }),
   }
 );
