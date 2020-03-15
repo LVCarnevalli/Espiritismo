@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { TextBold, TextNormal } from '../components/StyledText';
 import { bindActionCreators } from 'redux';
 import { loadQuestions, updateQuestions } from '../store/actions/QuestionAction';
+import { loadPrayers, updatePrayers } from '../store/actions/PrayerAction';
 import Toast from 'react-native-easy-toast';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 
@@ -22,20 +23,29 @@ class Welcome extends React.Component {
     let question = this.props.question;
     if (!question || !question.result || !question.result.length > 0) {
       this.props.loadQuestions();
-      setTimeout(() => {
-        if (this.props.offline) {
-          this.setState({
-            messageOffline: true,
-          });
-        }
-      }, 3000);
     } else {
       this.props.updateQuestions();
     }
+
+    let prayer = this.props.prayer;
+    if (!prayer || !prayer.result || !prayer.result.length > 0) {
+      this.props.loadPrayers();
+    } else {
+      this.props.updatePrayers();
+    }
+
+    setTimeout(() => {
+      if (this.props.offline) {
+        this.setState({
+          messageOffline: true,
+        });
+      }
+    }, 3000);
   }
 
   UNSAFE_componentWillReceiveProps(prevProps) {
-    if (this.props.question.error && this.props.question.error !== prevProps.question.error) {
+    if ((this.props.question.error && this.props.question.error !== prevProps.question.error) ||
+      (this.props.prayer.error && this.props.prayer.error !== prevProps.prayer.error)) {
       this.refs.toast.show('Ops, ocorreu um problema. Tente novamente.', 2000, () => {});
     }
   }
@@ -45,7 +55,9 @@ class Welcome extends React.Component {
       !this.props.offline &&
       !this.state.messageOffline &&
       !this.props.question.loading &&
-      !this.props.question.error
+      !this.props.question.error  &&
+    !this.props.prayer.loading &&
+    !this.props.prayer.error
     ) {
       this.props.navigation.navigate('Menu');
     }
@@ -55,9 +67,9 @@ class Welcome extends React.Component {
     let message;
     if (this.props.offline && this.state.messageOffline) {
       message = 'SEM CONEXÃO';
-    } else if (this.props.question.loading) {
+    } else if (this.props.question.loading || this.props.prayer.loading) {
       message = 'CARREGANDO';
-    } else if (this.props.question.error) {
+    } else if (this.props.question.error || this.props.prayer.error) {
       message = 'TENTE NOVAMENTE';
     } else {
       message = 'CONTINUAR';
@@ -66,8 +78,9 @@ class Welcome extends React.Component {
   }
 
   _handleNextPress = () => {
-    if (this.props.question.error) {
+    if (this.props.question.error || this.props.prayer.error) {
       this.props.loadQuestions();
+      this.props.loadPrayers();
     } else {
       this.props.navigation.navigate('Menu');
     }
@@ -106,11 +119,11 @@ class Welcome extends React.Component {
           </View>
           <View style={styles.footer}>
             <TouchableOpacity
-              disabled={this.props.question.loading || this.props.offline}
+              disabled={this.props.question.loading || this.props.prayer.loading || this.props.offline}
               onPress={this._handleNextPress}
               style={[
                 styles.nextContainer,
-                { opacity: this.props.question.loading || this.props.offline ? 0.2 : 1 },
+                { opacity: this.props.question.loading || this.props.prayer.loading || this.props.offline ? 0.2 : 1 },
               ]}>
               <TextBold style={styles.nextText}>{this._messageNextButton()}</TextBold>
             </TouchableOpacity>
@@ -121,15 +134,17 @@ class Welcome extends React.Component {
   }
 }
 
-function mapStateToProps({ question, global }) {
-  return { question, offline: global.offline };
+function mapStateToProps({ question,prayer, global }) {
+  return { question, prayer, offline: global.offline };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       loadQuestions,
+      loadPrayers,
       updateQuestions,
+      updatePrayers
     },
     dispatch
   );

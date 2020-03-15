@@ -31,7 +31,7 @@ class Menu extends React.Component {
           title: 'Capítulos',
           color: '#e84393',
           subTitle: 'O livro dos Espíritos',
-          footer: 'Busque o seu assunto',
+          footer: 'Busque por capítulo',
           image: require('../../assets/images/IconSearch.png'),
           link: 'Search',
         },
