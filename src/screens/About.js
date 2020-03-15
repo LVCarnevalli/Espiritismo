@@ -1,20 +1,18 @@
-// This code is a legacy and will be modified for good practice.
-
 import React from 'react';
-import { View, StyleSheet, Text, Linking, TouchableOpacity, Image } from 'react-native';
-import Colors from '../constants/Colors';
-import * as GoogleAnalytics from '../services/GoogleAnalytics';
+import { Linking, StyleSheet, View } from 'react-native';
 import SettingsList from 'react-native-settings-list';
 
+import * as GoogleAnalytics from '../services/GoogleAnalytics';
+
 class About extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     GoogleAnalytics.pageHit('About');
   }
 
   render() {
     return (
-      <View style={{ backgroundColor: '#EFEFF4', flex: 1 }}>
+      <View style={styles.container}>
         <SettingsList borderColor="#ffffff" defaultItemSize={50}>
           <SettingsList.Item
             title="Faça seu comentário"
@@ -28,13 +26,11 @@ class About extends React.Component {
             onPress={() => Linking.openURL('https://github.com/LVCarnevalli/espiritismo')}
             borderHide={'Both'}
           />
-          <SettingsList.Header
-            headerStyle={{ margin: 0, height: 0.5, backgroundColor: '#A7A7AA' }}
-          />
+          <SettingsList.Header headerStyle={styles.separator} />
           <SettingsList.Item
             hasNavArrow={false}
             title="Conteúdo legal e políticas"
-            titleStyle={{ fontSize: 18 }}
+            titleStyle={styles.title}
             borderHide={'Both'}
           />
           <SettingsList.Item
@@ -46,11 +42,10 @@ class About extends React.Component {
             }
             borderHide={'Both'}
           />
-
           <SettingsList.Item
             title="by VERDI"
             itemWidth={30}
-            titleStyle={{ fontSize: 10 }}
+            titleStyle={styles.footer}
             hasNavArrow={false}
             borderHide={'Both'}
           />
@@ -60,25 +55,22 @@ class About extends React.Component {
   }
 }
 
-export default About;
-
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#EFEFF4',
     flex: 1,
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 30,
-    paddingBottom: 10,
   },
-  containerLink: {
-    paddingTop: 30,
+  separator: {
+    margin: 0,
+    height: 0.5,
+    backgroundColor: '#A7A7AA',
   },
-  text: {
-    fontSize: 22,
+  title: {
+    fontSize: 18,
   },
-  textLink: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: Colors.iconShare,
+  footer: {
+    fontSize: 10,
   },
 });
+
+export default About;

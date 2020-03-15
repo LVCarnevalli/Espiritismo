@@ -1,4 +1,5 @@
 import { createStackNavigator } from 'react-navigation';
+
 import WelcomeScreen from '../../screens/Welcome';
 
 const WelcomeStack = createStackNavigator(

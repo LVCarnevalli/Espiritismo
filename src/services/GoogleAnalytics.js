@@ -1,4 +1,4 @@
-import { Analytics, PageHit, Event } from 'expo-analytics';
+import { Analytics, Event, PageHit } from 'expo-analytics';
 import { GOOGLE_ANALYTICS_TRACKING_ID } from 'react-native-dotenv';
 
 const analytics = new Analytics(GOOGLE_ANALYTICS_TRACKING_ID);

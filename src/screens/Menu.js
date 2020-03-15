@@ -2,72 +2,73 @@
 // Colors: https://flatuicolors.com/palette/us
 
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList } from 'react-native';
+import { FlatList, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+
 import { TextBold, TextNormal } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 
 class Menu extends React.Component {
+  state = {
+    data: [
+      {
+        id: 1,
+        title: 'Kardec',
+        color: '#0984e3',
+        footer: 'Em breve, aguarde...',
+        image: require('../../assets/images/IconLightbulb.png'),
+      },
+      {
+        id: 2,
+        title: 'Questões',
+        color: '#00b894',
+        subTitle: 'O livro dos Espíritos',
+        footer: 'Leia sem compromisso',
+        image: require('../../assets/images/IconQuestion.png'),
+        link: 'Question',
+      },
+      {
+        id: 3,
+        title: 'Capítulos',
+        color: '#e84393',
+        subTitle: 'O livro dos Espíritos',
+        footer: 'Busque por capítulo',
+        image: require('../../assets/images/IconSearch.png'),
+        link: 'Search',
+      },
+      {
+        id: 4,
+        title: 'Leitura',
+        color: '#e17055',
+        subTitle: 'O livro dos Espíritos',
+        footer: 'Leia o livro',
+        image: require('../../assets/images/IconRead.png'),
+        link: 'Booking',
+      },
+      {
+        id: 5,
+        title: 'Preces',
+        color: '#6c5ce7',
+        footer: 'Momento de silêncio',
+        image: require('../../assets/images/IconSave.png'),
+        link: 'Prayer',
+      },
+      {
+        id: 6,
+        title: 'Sobre',
+        color: '#636e72',
+        footer: 'Faça seu comentário',
+        image: require('../../assets/images/IconLove.png'),
+        link: 'About',
+      },
+    ],
+  };
+
   constructor(props) {
     super(props);
     GoogleAnalytics.pageHit('Menu');
-
-    this.state = {
-      data: [
-        {
-          id: 1,
-          title: 'Kardec',
-          color: '#0984e3',
-          footer: 'Em breve, aguarde...',
-          image: require('../../assets/images/IconLightbulb.png'),
-        },
-        {
-          id: 2,
-          title: 'Questões',
-          color: '#00b894',
-          subTitle: 'O livro dos Espíritos',
-          footer: 'Leia sem compromisso',
-          image: require('../../assets/images/IconQuestion.png'),
-          link: 'Question',
-        },
-        {
-          id: 3,
-          title: 'Capítulos',
-          color: '#e84393',
-          subTitle: 'O livro dos Espíritos',
-          footer: 'Busque por capítulo',
-          image: require('../../assets/images/IconSearch.png'),
-          link: 'Search',
-        },
-        {
-          id: 4,
-          title: 'Leitura',
-          color: '#e17055',
-          subTitle: 'O livro dos Espíritos',
-          footer: 'Leia o livro',
-          image: require('../../assets/images/IconRead.png'),
-          link: 'Booking',
-        },
-        {
-          id: 5,
-          title: 'Preces',
-          color: '#6c5ce7',
-          footer: 'Momento de silêncio',
-          image: require('../../assets/images/IconSave.png'),
-          link: 'Prayer',
-        },
-        {
-          id: 6,
-          title: 'Sobre',
-          color: '#636e72',
-          footer: 'Faça seu comentário',
-          image: require('../../assets/images/IconLove.png'),
-          link: 'About',
-        },
-      ],
-    };
   }
 
-  clickEventListener(item) {
+  _clickEventListener(item) {
     this.props.navigation.navigate(item.link);
   }
 
@@ -80,16 +81,14 @@ class Menu extends React.Component {
           data={this.state.data}
           horizontal={false}
           numColumns={2}
-          keyExtractor={item => {
-            return item.id;
-          }}
+          keyExtractor={item => item.id}
           renderItem={({ item }) => {
             return (
               <TouchableOpacity
                 style={[styles.card, { backgroundColor: item.color }]}
                 disabled={!item.link}
                 onPress={() => {
-                  this.clickEventListener(item);
+                  this._clickEventListener(item);
                 }}>
                 <View style={[styles.cardHeader, styles.table]}>
                   <View style={styles.column}>

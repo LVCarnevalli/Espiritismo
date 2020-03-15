@@ -1,4 +1,7 @@
 {
+  "plugins": [
+    "./node_modules/prettier-plugin-import-sort/src"
+  ],
   "printWidth": 100,
   "tabWidth": 2,
   "singleQuote": true,

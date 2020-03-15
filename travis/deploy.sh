@@ -7,5 +7,5 @@ echo "GOOGLE_ANALYTICS_TRACKING_ID=$GOOGLE_ANALYTICS_TRACKING_ID" >> .env
 
 yarn global add expo-cli@3.11.9
 expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD --non-interactive
+expo publish
 expo build:android
-#expo publish

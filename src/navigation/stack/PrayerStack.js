@@ -1,8 +1,9 @@
-import { createStackNavigator } from 'react-navigation';
-import PrayerScreen from '../../screens/Prayer';
-import MenuIcon from '../../components/MenuIcon';
 import React from 'react';
 import { View } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+
+import MenuIcon from '../../components/MenuIcon';
+import PrayerScreen from '../../screens/Prayer';
 
 const PrayerStack = createStackNavigator(
   {
@@ -20,7 +21,7 @@ const PrayerStack = createStackNavigator(
         alignSelf: 'center',
         flex: 1,
         fontSize: 18,
-        fontFamily: 'open-sans-regular'
+        fontFamily: 'open-sans-regular',
       },
       headerTintColor: '#fff',
       headerStyle: {

@@ -1,14 +1,15 @@
-import { createStackNavigator } from 'react-navigation';
 import React from 'react';
-import QuestionScreen from '../../screens/Question';
+import { createStackNavigator } from 'react-navigation';
+
 import MenuIcon from '../../components/MenuIcon';
+import QuestionScreen from '../../screens/Question';
 
 const options = {
   headerMode: 'screen',
   cardStyle: { backgroundColor: '#FFFFFF' },
   navigationOptions: ({ navigation }) => ({
     tabBarVisible: false,
-    headerTitleStyle: { fontWeight: '400', fontSize: 18, fontFamily: 'open-sans-regular'  },
+    headerTitleStyle: { fontWeight: '400', fontSize: 18, fontFamily: 'open-sans-regular' },
     headerLeft: <MenuIcon navigation={navigation} />,
   }),
 };

@@ -1,11 +1,12 @@
 import React from 'react';
 import { createSwitchNavigator } from 'react-navigation';
-import WelcomeStack from './stack/WelcomeStack';
-import { QuestionStack, ReadQuestionStack, BookingQuestionStack } from './stack/QuestionStack';
-import SearchStack from './stack/SearchStack';
+
 import BookingStack from './stack/BookingStack';
-import PrayerStack from './stack/PrayerStack';
 import MenuStack from './stack/MenuStack';
+import PrayerStack from './stack/PrayerStack';
+import { BookingQuestionStack, QuestionStack, ReadQuestionStack } from './stack/QuestionStack';
+import SearchStack from './stack/SearchStack';
+import WelcomeStack from './stack/WelcomeStack';
 
 export default createSwitchNavigator({
   Welcome: { screen: WelcomeStack },
@@ -16,6 +17,6 @@ export default createSwitchNavigator({
     SearchStack,
     BookingStack,
     MenuStack,
-    PrayerStack
+    PrayerStack,
   }),
 });

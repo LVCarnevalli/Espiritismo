@@ -1,5 +1,3 @@
-// This code is a legacy and will be modified for good practice.
-
 import * as firebase from 'firebase';
 
 export const LOAD_PRAYERS_INIT = 'LOAD_PRAYERS_INIT';

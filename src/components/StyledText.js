@@ -1,5 +1,3 @@
-// This code is a legacy and will be modified for good practice.
-
 import React from 'react';
 import { Text } from 'react-native';
 

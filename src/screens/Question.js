@@ -1,21 +1,22 @@
 // This code is a legacy and will be modified for good practice.
 
+import _ from 'lodash';
 import React from 'react';
-import { ScrollView, View, StyleSheet, Image, Share, Alert } from 'react-native';
-import { FormatText } from '../components/FormatText';
-import ActionSheet from '../components/ActionSheet';
-import { TextLight, TextBold } from '../components/StyledText';
-import Layout from '../constants/Layout';
+import { Alert, Image, ScrollView, Share, StyleSheet, View } from 'react-native';
+import Swiper from 'react-native-swiper/src';
 import { connect } from 'react-redux';
+
+import ActionSheet from '../components/ActionSheet';
+import FormatText from '../components/FormatText';
+import { TextBold, TextLight } from '../components/StyledText';
+import Layout from '../constants/Layout';
+import * as GoogleAnalytics from '../services/GoogleAnalytics';
 import { updateNotFirstLaunch } from '../store/actions/GlobalAction';
 import {
-  readQuestions,
   readBookingQuestions,
+  readQuestions,
   updateIndexBookingQuestions,
 } from '../store/actions/QuestionAction';
-import Swiper from 'react-native-swiper/src';
-import _ from 'lodash';
-import * as GoogleAnalytics from '../services/GoogleAnalytics';
 
 Array.prototype.flatMap = function(lambda) {
   return Array.prototype.concat.apply([], this.map(lambda));
@@ -84,7 +85,10 @@ class Question extends React.Component {
   }
 
   componentDidMount() {
-    this.props.navigation.setParams({ shared: this.shareQuestion, title: 'O LIVRO DOS ESPÍRITOS' });
+    this.props.navigation.setParams({
+      shared: this._shareQuestion,
+      title: 'O LIVRO DOS ESPÍRITOS',
+    });
 
     let items;
 
@@ -150,11 +154,11 @@ class Question extends React.Component {
     });
   }
 
-  formatMessage(message) {
+  _formatMessage(message) {
     return message.replace(/\n/g, ' ').replace(/<[^>]*>/g, '');
   }
 
-  shareQuestion = () => {
+  _shareQuestion = () => {
     GoogleAnalytics.eventShareQuestion();
     Share.share(
       {
@@ -162,7 +166,7 @@ class Question extends React.Component {
           this.state.actualQuestion.number
         }\n${this.state.actualQuestion.category}\nPergunta: ${
           this.state.actualQuestion.question
-        }\nResposta: ${this.formatMessage(this.state.actualQuestion.answer)}`,
+        }\nResposta: ${this._formatMessage(this.state.actualQuestion.answer)}`,
         title: 'O Livro dos Espíritos',
       },
       {
@@ -171,7 +175,7 @@ class Question extends React.Component {
     );
   };
 
-  renderGesture() {
+  _renderGesture() {
     if (this.state.firstLaunch) {
       return (
         <View style={styles.containerGesture}>
@@ -181,7 +185,7 @@ class Question extends React.Component {
     }
   }
 
-  renderPage = (item, key) => {
+  _renderPage = (item, key) => {
     let questionViewsRandom = (
       <TextLight style={styles.infoText}>
         {this.props.question.resultRead.length + 1}/{this.props.question.result.length} questões
@@ -190,7 +194,7 @@ class Question extends React.Component {
     );
     return (
       <ScrollView key={'view' + key}>
-        {this.renderGesture()}
+        {this._renderGesture()}
         <View style={styles.questionContainer}>
           <TextBold style={styles.questionText}>{item.question}</TextBold>
         </View>
@@ -262,8 +266,6 @@ class Question extends React.Component {
 
           // estudo aleatorio
           if (index > 0 && !this.state.questionBooking && !this.state.booking) {
-
-
             const actualQuestion = this.state.items[index - 1];
             const existQuestion =
               this.props.question.resultRead && this.props.question.resultRead.length > 0
@@ -277,26 +279,11 @@ class Question extends React.Component {
             }
           }
         }}>
-        {this.state.items.map((item, key) => this.renderPage(item, key))}
+        {this.state.items.map((item, key) => this._renderPage(item, key))}
       </Swiper>
     );
   }
 }
-
-function mapStateToProps({ question, global }) {
-  return { question, isFirstLaunch: global.firstLaunch };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    updateNotFirstLaunch: () => updateNotFirstLaunch(dispatch),
-    readQuestions: question => readQuestions(dispatch, question),
-    readBookingQuestions: question => readBookingQuestions(dispatch, question),
-    updateIndexBookingQuestions: index => updateIndexBookingQuestions(dispatch, index),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Question);
 
 const styles = StyleSheet.create({
   background: {
@@ -368,3 +355,18 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
 });
+
+function mapStateToProps({ question, global }) {
+  return { question, isFirstLaunch: global.firstLaunch };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    updateNotFirstLaunch: () => updateNotFirstLaunch(dispatch),
+    readQuestions: question => readQuestions(dispatch, question),
+    readBookingQuestions: question => readBookingQuestions(dispatch, question),
+    updateIndexBookingQuestions: index => updateIndexBookingQuestions(dispatch, index),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Question);

@@ -1,8 +1,9 @@
-import { createStackNavigator } from 'react-navigation';
-import BookingScreen from '../../screens/Booking';
-import MenuIcon from '../../components/MenuIcon';
 import React from 'react';
 import { View } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+
+import MenuIcon from '../../components/MenuIcon';
+import BookingScreen from '../../screens/Booking';
 
 const BookingStack = createStackNavigator(
   {
@@ -19,8 +20,8 @@ const BookingStack = createStackNavigator(
         alignSelf: 'center',
         flex: 1,
         fontSize: 18,
-       fontFamily: 'open-sans-regular'
-    },
+        fontFamily: 'open-sans-regular',
+      },
       headerTintColor: '#fff',
       headerStyle: {
         backgroundColor: '#2196f3',

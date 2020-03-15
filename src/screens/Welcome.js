@@ -1,22 +1,24 @@
 // This code is a legacy and will be modified for good practice.
 
 import React from 'react';
-import { Text, View, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux';
-import { TextBold, TextNormal } from '../components/StyledText';
-import { bindActionCreators } from 'redux';
-import { loadQuestions, updateQuestions } from '../store/actions/QuestionAction';
-import { loadPrayers, updatePrayers } from '../store/actions/PrayerAction';
+import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Toast from 'react-native-easy-toast';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { TextBold } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
+import { loadPrayers, updatePrayers } from '../store/actions/PrayerAction';
+import { loadQuestions, updateQuestions } from '../store/actions/QuestionAction';
 
 class Welcome extends React.Component {
-  constructor() {
-    super();
+  state = {
+    messageOffline: false,
+  };
+
+  constructor(props) {
+    super(props);
     GoogleAnalytics.pageHit('Welcome');
-    this.state = {
-      messageOffline: false,
-    };
   }
 
   UNSAFE_componentWillMount() {
@@ -44,8 +46,10 @@ class Welcome extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(prevProps) {
-    if ((this.props.question.error && this.props.question.error !== prevProps.question.error) ||
-      (this.props.prayer.error && this.props.prayer.error !== prevProps.prayer.error)) {
+    if (
+      (this.props.question.error && this.props.question.error !== prevProps.question.error) ||
+      (this.props.prayer.error && this.props.prayer.error !== prevProps.prayer.error)
+    ) {
       this.refs.toast.show('Ops, ocorreu um problema. Tente novamente.', 2000, () => {});
     }
   }
@@ -55,9 +59,9 @@ class Welcome extends React.Component {
       !this.props.offline &&
       !this.state.messageOffline &&
       !this.props.question.loading &&
-      !this.props.question.error  &&
-    !this.props.prayer.loading &&
-    !this.props.prayer.error
+      !this.props.question.error &&
+      !this.props.prayer.loading &&
+      !this.props.prayer.error
     ) {
       this.props.navigation.navigate('Menu');
     }
@@ -119,11 +123,18 @@ class Welcome extends React.Component {
           </View>
           <View style={styles.footer}>
             <TouchableOpacity
-              disabled={this.props.question.loading || this.props.prayer.loading || this.props.offline}
+              disabled={
+                this.props.question.loading || this.props.prayer.loading || this.props.offline
+              }
               onPress={this._handleNextPress}
               style={[
                 styles.nextContainer,
-                { opacity: this.props.question.loading || this.props.prayer.loading || this.props.offline ? 0.2 : 1 },
+                {
+                  opacity:
+                    this.props.question.loading || this.props.prayer.loading || this.props.offline
+                      ? 0.2
+                      : 1,
+                },
               ]}>
               <TextBold style={styles.nextText}>{this._messageNextButton()}</TextBold>
             </TouchableOpacity>
@@ -133,24 +144,6 @@ class Welcome extends React.Component {
     );
   }
 }
-
-function mapStateToProps({ question,prayer, global }) {
-  return { question, prayer, offline: global.offline };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    {
-      loadQuestions,
-      loadPrayers,
-      updateQuestions,
-      updatePrayers
-    },
-    dispatch
-  );
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
 
 const styles = StyleSheet.create({
   background: {
@@ -209,3 +202,21 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
+
+function mapStateToProps({ question, prayer, global }) {
+  return { question, prayer, offline: global.offline };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      loadQuestions,
+      loadPrayers,
+      updateQuestions,
+      updatePrayers,
+    },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);

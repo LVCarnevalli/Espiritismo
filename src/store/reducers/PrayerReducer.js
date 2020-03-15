@@ -1,13 +1,11 @@
-// This code is a legacy and will be modified for good practice.
-
 import {
+  LOAD_PRAYERS_ERROR,
   LOAD_PRAYERS_INIT,
   LOAD_PRAYERS_SUCCESS,
-  LOAD_PRAYERS_ERROR,
-  UPDATE_PRAYERS_SUCCESS,
-  READ_PRAYERS,
   READ_BOOKING_PRAYERS,
+  READ_PRAYERS,
   UPDATE_INDEX_PRAYER_BOOKING_PRAYERS,
+  UPDATE_PRAYERS_SUCCESS,
 } from '../actions/PrayerAction';
 
 const INITIAL_STATE = {

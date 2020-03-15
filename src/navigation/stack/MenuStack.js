@@ -1,10 +1,8 @@
-import { createStackNavigator } from 'react-navigation';
-import MenuScreen from '../../screens/Menu';
-import AboutScreen from '../../screens/About';
-import { Feather } from '@expo/vector-icons';
-import { Text, View } from 'react-native';
 import * as React from 'react';
-import MenuIcon from '../../components/MenuIcon';
+import { createStackNavigator } from 'react-navigation';
+
+import AboutScreen from '../../screens/About';
+import MenuScreen from '../../screens/Menu';
 
 const MenuStack = createStackNavigator(
   {

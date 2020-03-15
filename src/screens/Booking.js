@@ -1,56 +1,53 @@
-// This code is a legacy and will be modified for good practice.
-
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import { TextBold, TextItalic, TextNormal } from '../components/StyledText';
-import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { connect } from 'react-redux';
-import { Button } from 'react-native-elements';
+
+import { TextBold, TextNormal } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 
 class Booking extends React.Component {
   _isMounted = false;
 
+  state = {
+    progress: 0,
+    indeterminate: true,
+  };
+
   constructor(props) {
     super(props);
     GoogleAnalytics.pageHit('Booking');
-
-    this.state = {
-      progress: 0,
-      indeterminate: true,
-    };
   }
 
   componentDidMount() {
     this._isMounted = true;
-    this.animate();
+    this._animate();
   }
 
   componentWillUnmount() {
     this._isMounted = false;
   }
 
-  animate() {
-    let progress = 0;
-    this.setState({ progress });
-    progress =
-      (this.props.question.resultBookingRead.length * 100) / this.props.question.result.length;
-    if (this._isMounted) this.setState({ indeterminate: false, progress });
+  _animate() {
+    this.setState({ progress: 0 });
+    if (this._isMounted) {
+      this.setState({
+        indeterminate: false,
+        progress:
+          (this.props.question.resultBookingRead.length * 100) / this.props.question.result.length,
+      });
+    }
   }
+
+  _next = () => {
+    GoogleAnalytics.eventBookingQuestion();
+    this.props.navigation.navigate('BookingQuestion', { booking: true });
+  };
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <View
-          style={{
-            backgroundColor: '#2196f3',
-            width: '100%',
-            height: '100%',
-            flex: 1,
-            alignItems: 'center',
-            paddingTop: 50,
-          }}>
+      <View style={styles.container}>
+        <View style={styles.subContainer}>
           <AnimatedCircularProgress
             style={styles.progress}
             size={200}
@@ -61,36 +58,19 @@ class Booking extends React.Component {
             ref="circularProgress"
             rotation={0}
             backgroundColor="#3d5875">
-            {fill => (
-              <TextNormal
-                style={{
-                  fontSize: 30,
-                  color: 'white',
-                }}>
+            {() => (
+              <TextNormal style={styles.progressText}>
                 {Math.floor(this.state.progress * Math.pow(10, 0)) / Math.pow(10, 0)}
                 {'%'}
               </TextNormal>
             )}
           </AnimatedCircularProgress>
-          <TextNormal
-            style={{
-              fontSize: 20,
-              color: 'white',
-              paddingLeft: 30,
-              paddingRight: 30,
-              paddingTop: 50,
-              textAlign: 'left',
-            }}>
+          <TextNormal style={styles.text}>
             Acompanhe o progresso da sua leitura, o modo leitura abrange todas as questões do livro.
           </TextNormal>
         </View>
         <View style={styles.footer}>
-          <TouchableOpacity
-            style={[styles.nextContainer]}
-            onPress={() => {
-              GoogleAnalytics.eventBookingQuestion();
-              this.props.navigation.navigate('BookingQuestion', { booking: true });
-            }}>
+          <TouchableOpacity style={styles.nextContainer} onPress={this._next}>
             <TextBold style={styles.nextText}>
               {this.props.question.indexBookingRead > 0 ? 'CONTINUAR' : 'INICIAR'}
             </TextBold>
@@ -101,35 +81,35 @@ class Booking extends React.Component {
   }
 }
 
-function mapStateToProps({ question }) {
-  return { question };
-}
-
-export default connect(mapStateToProps, null)(Booking);
-
 const styles = StyleSheet.create({
-  container: {
+  container: { flex: 1 },
+  subContainer: {
+    backgroundColor: '#2196f3',
+    width: '100%',
+    height: '100%',
     flex: 1,
-    textAlign: 'center',
-    backgroundColor: '#fff',
-    paddingVertical: 20,
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  circles: {
-    flexDirection: 'row',
     alignItems: 'center',
+    paddingTop: 50,
   },
   progress: {
     margin: 10,
+  },
+  progressText: {
+    fontSize: 30,
+    color: 'white',
   },
   nextText: {
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
+  },
+  text: {
+    fontSize: 20,
+    color: 'white',
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingTop: 50,
+    textAlign: 'left',
   },
   footer: {
     height: 70,
@@ -149,3 +129,9 @@ const styles = StyleSheet.create({
     borderColor: 'white',
   },
 });
+
+function mapStateToProps({ question }) {
+  return { question };
+}
+
+export default connect(mapStateToProps, null)(Booking);

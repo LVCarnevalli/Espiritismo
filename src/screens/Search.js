@@ -1,16 +1,14 @@
-// This code is a legacy and will be modified for good practice.
-
+import SearchList, { HighlightableText } from '@unpourtous/react-native-search-list';
+import * as _ from 'lodash';
 import React from 'react';
-import { StatusBar, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loadQuestions, updateQuestions } from '../store/actions/QuestionAction';
-import SearchList, { HighlightableText } from '@unpourtous/react-native-search-list';
-import { Ionicons } from '@expo/vector-icons';
-import * as _ from 'lodash';
-import * as GoogleAnalytics from '../services/GoogleAnalytics';
+
 import MenuIcon from '../components/MenuIcon';
 import { TextNormal } from '../components/StyledText';
+import * as GoogleAnalytics from '../services/GoogleAnalytics';
+import { loadQuestions, updateQuestions } from '../store/actions/QuestionAction';
 
 class Search extends React.Component {
   constructor(props) {
@@ -33,19 +31,20 @@ class Search extends React.Component {
     };
   }
 
-  renderRow(item, sectionID, rowID, highlightRowFunc, isSearching) {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          GoogleAnalytics.eventSearchQuestion();
-          let lastItemNumber = item.value[item.value.length - 1].number;
-          let index = this.state.questions.findIndex(value => value.number == lastItemNumber);
+  _openQuestion = item => {
+    GoogleAnalytics.eventSearchQuestion();
+    let lastItemNumber = item.value[item.value.length - 1].number;
+    let index = this.state.questions.findIndex(value => value.number == lastItemNumber);
 
-          this.props.navigation.navigate('ReadQuestion', {
-            questionBooking: item.value.concat(_.slice(this.state.questions, index + 1)),
-          });
-        }}>
-        <View key={rowID} style={{ flex: 1, marginLeft: 20, height: 50, justifyContent: 'center',  }}>
+    this.props.navigation.navigate('ReadQuestion', {
+      questionBooking: item.value.concat(_.slice(this.state.questions, index + 1)),
+    });
+  };
+
+  _renderRow = (item, sectionID, rowID, highlightRowFunc, isSearching) => {
+    return (
+      <TouchableOpacity onPress={() => this._openQuestion(item)}>
+        <View key={rowID} style={{ flex: 1, marginLeft: 20, height: 50, justifyContent: 'center' }}>
           <HighlightableText
             matcher={item.matcher}
             text={item.searchStr}
@@ -55,29 +54,34 @@ class Search extends React.Component {
         </View>
       </TouchableOpacity>
     );
-  }
+  };
 
-  renderEmpty() {
+  _renderEmpty = () => {
     return (
       <View style={styles.emptyDataSource}>
-        <TextNormal style={{ color: '#979797', fontSize: 18, paddingTop: 20 }}> No Content </TextNormal>
+        <TextNormal style={{ color: '#979797', fontSize: 18, paddingTop: 20 }}>
+          {' '}
+          No Content{' '}
+        </TextNormal>
       </View>
     );
-  }
+  };
 
-  renderEmptyResult(searchStr) {
+  _renderEmptyResult = searchStr => {
     return (
       <View style={styles.emptySearchResult}>
         <TextNormal style={{ color: '#979797', fontSize: 18, paddingTop: 20 }}>
           {' '}
-          Não encontrado <TextNormal style={{ color: '#171a23', fontSize: 18 }}>{searchStr}</TextNormal>
+          Não encontrado{' '}
+          <TextNormal style={{ color: '#171a23', fontSize: 18 }}>{searchStr}</TextNormal>
         </TextNormal>
-        <TextNormal style={{ color: '#979797', fontSize: 18, alignItems: 'center', paddingTop: 10 }}>
+        <TextNormal
+          style={{ color: '#979797', fontSize: 18, alignItems: 'center', paddingTop: 10 }}>
           Realize a busca novamente
         </TextNormal>
       </View>
     );
-  }
+  };
 
   render() {
     return (
@@ -86,13 +90,13 @@ class Search extends React.Component {
         <SearchList
           data={this.state.dataSource}
           hideSectionList={true}
-          renderRow={this.renderRow.bind(this)}
-          renderEmptyResult={this.renderEmptyResult.bind(this)}
+          renderRow={this._renderRow}
+          renderEmptyResult={this._renderEmptyResult}
           renderBackButton={() => (
             <MenuIcon navigation={this.props.navigation} iconStyle={{ color: '#FFFFFF' }} />
           )}
           renderRightButton={() => <View style={{ paddingRight: 40 }}></View>}
-          renderEmpty={this.renderEmpty.bind(this)}
+          renderEmpty={this._renderEmpty}
           rowHeight={50}
           toolbarBackgroundColor={'#2196f3'}
           title="CAPÍTULOS"
@@ -112,22 +116,6 @@ class Search extends React.Component {
     );
   }
 }
-
-function mapStateToProps({ question, global }) {
-  return { question, offline: global.offline };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    {
-      loadQuestions,
-      updateQuestions,
-    },
-    dispatch
-  );
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
 const styles = StyleSheet.create({
   container: {
@@ -161,3 +149,19 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
 });
+
+function mapStateToProps({ question, global }) {
+  return { question, offline: global.offline };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      loadQuestions,
+      updateQuestions,
+    },
+    dispatch
+  );
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -1,10 +1,11 @@
+import { Feather } from '@expo/vector-icons';
 import * as React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Feather } from '@expo/vector-icons';
 
-class MenuIcon extends React.PureComponent {
+class MenuIcon extends React.Component {
   static defaultProps = {
     navigation: null,
+    iconStyle: null,
   };
 
   _navigate = () => {
@@ -23,10 +24,10 @@ class MenuIcon extends React.PureComponent {
   }
 }
 
-export default MenuIcon;
-
 const styles = StyleSheet.create({
   container: {
     paddingLeft: 10,
   },
 });
+
+export default MenuIcon;

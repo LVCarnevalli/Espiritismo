@@ -1,17 +1,13 @@
-import React from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, ScrollView } from 'react-native';
-import Modal from 'react-native-modal';
 import { Ionicons } from '@expo/vector-icons';
-import { TextBold, TextItalic, TextLight, TextNormal } from '../components/StyledText';
+import React from 'react';
+import { FlatList, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
+
+import { TextBold, TextLight, TextNormal } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 
 class Prayer extends React.Component {
-  constructor() {
-    super();
-    GoogleAnalytics.pageHit('Prayer');
-  }
-
   state = {
     isModalVisible: false,
     modalItem: {
@@ -21,6 +17,11 @@ class Prayer extends React.Component {
       observation: null,
     },
   };
+
+  constructor(props) {
+    super(props);
+    GoogleAnalytics.pageHit('Prayer');
+  }
 
   _showModal = item => {
     GoogleAnalytics.eventSelectPrayer(item.name);
@@ -58,7 +59,7 @@ class Prayer extends React.Component {
               style={styles.closeModal}
               onPress={this._hideModal}
             />
-            <View style={styles.header}/>
+            <View style={styles.header} />
             <ScrollView>
               <View style={styles.modalText}>
                 <TextNormal style={styles.text}>
@@ -90,17 +91,11 @@ class Prayer extends React.Component {
   }
 }
 
-function mapStateToProps({ prayer}) {
-  return { prayer};
-}
-
-export default connect(mapStateToProps, {})(Prayer);
-
 const styles = StyleSheet.create({
   header: {
     marginHorizontal: '20%',
     height: 0.5,
-    backgroundColor: '#FFF'
+    backgroundColor: '#FFF',
   },
   closeModal: {
     color: '#FFF',
@@ -144,7 +139,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: '500',
     color: '#fff',
-    fontSize: 15
+    fontSize: 15,
   },
   description: {
     color: '#fff',
@@ -165,3 +160,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+function mapStateToProps({ prayer }) {
+  return { prayer };
+}
+
+export default connect(mapStateToProps, null)(Prayer);

@@ -1,9 +1,9 @@
+import { connectActionSheet } from '@expo/react-native-action-sheet';
+import { Feather } from '@expo/vector-icons';
 import * as React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Feather } from '@expo/vector-icons';
-import { connectActionSheet } from '@expo/react-native-action-sheet';
 
-class ActionSheet extends React.PureComponent {
+class ActionSheet extends React.Component {
   static defaultProps = {
     onSelection: null,
     options: [],
@@ -40,8 +40,6 @@ class ActionSheet extends React.PureComponent {
   }
 }
 
-export default connectActionSheet(ActionSheet);
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -70,3 +68,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
   },
 });
+
+export default connectActionSheet(ActionSheet);
