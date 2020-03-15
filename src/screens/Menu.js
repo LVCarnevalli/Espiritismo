@@ -4,10 +4,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList } from 'react-native';
 import { TextBold, TextNormal } from '../components/StyledText';
+import * as GoogleAnalytics from '../services/GoogleAnalytics';
 
 class Menu extends React.Component {
   constructor(props) {
     super(props);
+    GoogleAnalytics.pageHit('Menu');
+
     this.state = {
       data: [
         {

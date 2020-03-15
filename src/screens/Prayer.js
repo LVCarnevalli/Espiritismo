@@ -4,8 +4,14 @@ import Modal from 'react-native-modal';
 import { Ionicons } from '@expo/vector-icons';
 import { TextBold, TextItalic, TextLight, TextNormal } from '../components/StyledText';
 import { connect } from 'react-redux';
+import * as GoogleAnalytics from '../services/GoogleAnalytics';
 
 class Prayer extends React.Component {
+  constructor() {
+    super();
+    GoogleAnalytics.pageHit('Prayer');
+  }
+
   state = {
     isModalVisible: false,
     modalItem: {
@@ -17,6 +23,7 @@ class Prayer extends React.Component {
   };
 
   _showModal = item => {
+    GoogleAnalytics.eventSelectPrayer(item.name);
     this.setState({ isModalVisible: !this.state.isModalVisible, modalItem: item });
   };
 

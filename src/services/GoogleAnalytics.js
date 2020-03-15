@@ -1,29 +1,37 @@
-// This code is a legacy and will be modified for good practice.
-
 import { Analytics, PageHit, Event } from 'expo-analytics';
 import { GOOGLE_ANALYTICS_TRACKING_ID } from 'react-native-dotenv';
 
-export const pageHit = page => {
-  const analytics = new Analytics(GOOGLE_ANALYTICS_TRACKING_ID);
+const analytics = new Analytics(GOOGLE_ANALYTICS_TRACKING_ID);
+
+const pageHit = page => {
   analytics.hit(new PageHit(page));
 };
 
-export const eventSwipeQuestion = () => {
-  const analytics = new Analytics(GOOGLE_ANALYTICS_TRACKING_ID);
+const eventSwipeQuestion = () => {
   analytics.event(new Event('question', 'swipe', null, null));
 };
 
-export const eventShareQuestion = () => {
-  const analytics = new Analytics(GOOGLE_ANALYTICS_TRACKING_ID);
+const eventShareQuestion = () => {
   analytics.event(new Event('question', 'share', null, null));
 };
 
-export const eventBookingQuestion = () => {
-  const analytics = new Analytics(GOOGLE_ANALYTICS_TRACKING_ID);
+const eventBookingQuestion = () => {
   analytics.event(new Event('question', 'booking', null, null));
 };
 
-export const eventSearchQuestion = () => {
-  const analytics = new Analytics(GOOGLE_ANALYTICS_TRACKING_ID);
+const eventSearchQuestion = () => {
   analytics.event(new Event('question', 'search', null, null));
+};
+
+const eventSelectPrayer = name => {
+  analytics.event(new Event('prayer', name, null, null));
+};
+
+export {
+  pageHit,
+  eventSwipeQuestion,
+  eventShareQuestion,
+  eventBookingQuestion,
+  eventSearchQuestion,
+  eventSelectPrayer,
 };
