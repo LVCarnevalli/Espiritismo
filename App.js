@@ -12,6 +12,13 @@ import {
   FIREBASE_DATABASE_URL,
   FIREBASE_PROJECT_ID,
 } from 'react-native-dotenv';
+import {
+  setCustomImage,
+  setCustomText,
+  setCustomTextInput,
+  setCustomTouchableOpacity,
+  setCustomView,
+} from 'react-native-global-props';
 import ignoreWarnings from 'react-native-ignore-warnings';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -25,6 +32,17 @@ ignoreWarnings('Setting a timer');
 ignoreWarnings('componentWillReceiveProps has been renamed');
 ignoreWarnings('componentWillMount has been renamed');
 ignoreWarnings('componentWillUpdate has been renamed');
+
+const customFontFamily = {
+  style: {
+    fontFamily: 'open-sans-regular',
+  },
+};
+setCustomText(customFontFamily);
+setCustomView(customFontFamily);
+setCustomTextInput(customFontFamily);
+setCustomImage(customFontFamily);
+setCustomTouchableOpacity(customFontFamily);
 
 class App extends React.Component {
   static defaultProps = {

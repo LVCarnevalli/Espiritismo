@@ -6782,6 +6782,11 @@ react-native-elements@^0.19.1:
     opencollective "^1.0.3"
     prop-types "^15.5.8"
 
+react-native-global-props@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-native-global-props/-/react-native-global-props-1.1.5.tgz#443e0ffc89d5402fa20ebedf37bcbca6d861c34d"
+  integrity sha512-QDeAdRel6zyJfbgyFxZi9QXZe78OdlANxJae0rJn76uTqdt/A+iWBVjJy3NmaN/fpKy0uV0HhW6Hu4xM0QCisQ==
+
 react-native-ignore-warnings@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/react-native-ignore-warnings/-/react-native-ignore-warnings-0.1.1.tgz#3b6fb09d0e8f7917606fe8e18c6b1e28fafa044e"
@@ -6837,11 +6842,6 @@ react-native-settings-list@^1.8.0:
   dependencies:
     create-react-class "^15.6.2"
     prop-types "^15.5.10"
-
-react-native-share@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-3.1.0.tgz#654997beae455dd3b8e5e107c12d0b6110df2f18"
-  integrity sha512-GDZywjNZip7QtsOAJpV+CLOVijaiu2wSbsYuP6/TroSi5Q9DwHl8p1ls0QefjJTL6I3bKHjczGlU8OjzwSKIvA==
 
 react-native-svg@9.13.3:
   version "9.13.3"
