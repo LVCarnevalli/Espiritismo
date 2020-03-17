@@ -1,9 +1,10 @@
-import * as React from 'react';
+import React from 'react';
+import { View } from 'react-native';
 
-import MenuScreen from '../../screens/Menu';
+import AboutScreen from '../../screens/About';
 
-const MenuStack = {
-  screen: MenuScreen,
+const AboutStack = {
+  screen: AboutScreen,
   navigationOptions: {
     headerTitle: 'espiritismo',
     headerBackTitle: '',
@@ -18,7 +19,8 @@ const MenuStack = {
       textAlign: 'center',
       flex: 1,
     },
+    headerRight: <View></View>,
   },
 };
 
-export default MenuStack;
+export default AboutStack;

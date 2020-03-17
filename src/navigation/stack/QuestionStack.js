@@ -1,38 +1,39 @@
+import { Feather } from '@expo/vector-icons';
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { HeaderBackButton } from 'react-navigation';
 
-import MenuIcon from '../../components/MenuIcon';
 import QuestionScreen from '../../screens/Question';
+import Layout from '../../constants/Layout';
 
-const options = {
-  headerMode: 'screen',
-  cardStyle: { backgroundColor: '#FFFFFF' },
-  navigationOptions: ({ navigation }) => ({
-    tabBarVisible: false,
-    headerTitleStyle: { fontWeight: '400', fontSize: 18, fontFamily: 'open-sans-regular' },
-    headerLeft: <MenuIcon navigation={navigation} />,
-  }),
+const options = ({ navigation }) => ({
+  headerTitleStyle: {
+    fontWeight: '400',
+    textAlign: 'center',
+    alignSelf: 'center',
+    flex: 1,
+    fontSize: 18,
+  },
+  headerLeft: (
+    <HeaderBackButton
+      onPress={() => navigation.navigate('Menu')}
+      backImage={<Feather name="home" size={30} style={{paddingLeft: Layout.headerPadding}}/>}
+    />
+  ),
+});
+
+const QuestionStack = {
+  screen: QuestionScreen,
+  navigationOptions: options,
 };
 
-const QuestionStack = createStackNavigator(
-  {
-    Question: QuestionScreen,
-  },
-  options
-);
+const ReadQuestionStack = {
+  screen: QuestionScreen,
+  navigationOptions: options,
+};
 
-const ReadQuestionStack = createStackNavigator(
-  {
-    ReadQuestion: QuestionScreen,
-  },
-  options
-);
-
-const BookingQuestionStack = createStackNavigator(
-  {
-    BookingQuestion: QuestionScreen,
-  },
-  options
-);
+const BookingQuestionStack = {
+  screen: QuestionScreen,
+  navigationOptions: options,
+};
 
 export { QuestionStack, ReadQuestionStack, BookingQuestionStack };

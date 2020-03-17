@@ -8,6 +8,7 @@ import { TextBold, TextLight, TextNormal } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 
 class Prayer extends React.Component {
+
   state = {
     isModalVisible: false,
     modalItem: {
@@ -127,6 +128,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    backgroundColor: '#363537'
   },
   list: {
     paddingVertical: 6,
@@ -147,7 +149,6 @@ const styles = StyleSheet.create({
   listItem: {
     margin: 3,
     padding: 10,
-    backgroundColor: '#363537',
     flex: 1,
     alignSelf: 'center',
     flexDirection: 'row',

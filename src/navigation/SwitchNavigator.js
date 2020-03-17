@@ -1,6 +1,7 @@
 import React from 'react';
-import { createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
 
+import AboutStack from './stack/AboutStack';
 import BookingStack from './stack/BookingStack';
 import MenuStack from './stack/MenuStack';
 import PrayerStack from './stack/PrayerStack';
@@ -10,13 +11,21 @@ import WelcomeStack from './stack/WelcomeStack';
 
 export default createSwitchNavigator({
   Welcome: { screen: WelcomeStack },
-  Content: createSwitchNavigator({
-    QuestionStack,
-    ReadQuestionStack,
-    BookingQuestionStack,
-    SearchStack,
-    BookingStack,
-    MenuStack,
-    PrayerStack,
-  }),
+  Content: createStackNavigator(
+    {
+      Menu: MenuStack,
+      Question: QuestionStack,
+      ReadQuestion: ReadQuestionStack,
+      BookingQuestion: BookingQuestionStack,
+      Search: SearchStack,
+      Booking: BookingStack,
+      Prayer: PrayerStack,
+      About: AboutStack,
+    },
+    {
+      tabBarVisible: false,
+      headerMode: 'screen',
+      cardStyle: { backgroundColor: '#FFFFFF' },
+    }
+  ),
 });

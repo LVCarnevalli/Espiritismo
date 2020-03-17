@@ -1,38 +1,36 @@
+import { Feather } from '@expo/vector-icons';
 import React from 'react';
 import { View } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { HeaderBackButton } from 'react-navigation';
 
-import MenuIcon from '../../components/MenuIcon';
 import PrayerScreen from '../../screens/Prayer';
+import Layout from '../../constants/Layout';
 
-const PrayerStack = createStackNavigator(
-  {
-    Prayer: PrayerScreen,
-  },
-  {
-    headerMode: 'screen',
-    cardStyle: { backgroundColor: '#363537' },
-    navigationOptions: ({ navigation }) => ({
-      tabBarVisible: false,
-      headerTitle: 'PRECES',
-      headerTitleStyle: {
-        fontWeight: '400',
-        textAlign: 'center',
-        alignSelf: 'center',
-        flex: 1,
-        fontSize: 18,
-        fontFamily: 'open-sans-regular',
-      },
-      headerTintColor: '#fff',
-      headerStyle: {
-        backgroundColor: '#363537',
-        elevation: 0,
-        borderBottomWidth: 0,
-      },
-      headerRight: <View></View>,
-      headerLeft: <MenuIcon navigation={navigation} iconStyle={{ color: '#FFFFFF' }} />,
-    }),
-  }
-);
+const PrayerStack = {
+  screen: PrayerScreen,
+  navigationOptions: ({ navigation }) => ({
+    headerTitle: 'PRECES',
+    headerTitleStyle: {
+      fontWeight: '400',
+      textAlign: 'center',
+      alignSelf: 'center',
+      flex: 1,
+      fontSize: 18,
+    },
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#363537',
+      elevation: 0,
+      borderBottomWidth: 0,
+    },
+    headerRight: <View></View>,
+    headerLeft: (
+      <HeaderBackButton
+        onPress={() => navigation.navigate('Menu')}
+        backImage={<Feather name="home" size={30} style={{ color: '#FFFFFF', paddingLeft: Layout.headerPadding }} />}
+      />
+    ),
+  }),
+};
 
 export default PrayerStack;

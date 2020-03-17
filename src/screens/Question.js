@@ -44,9 +44,7 @@ class Question extends React.Component {
                 { cancelable: true }
               );
             } else if (index == 1) {
-              navigation
-                .getParam('shared')()
-                .bind(this);
+              navigation.getParam('shared')();
             }
           }}
         />
@@ -165,7 +163,7 @@ class Question extends React.Component {
     return message.replace(/\n/g, ' ').replace(/<[^>]*>/g, '');
   }
 
-  _shareQuestion = () => {
+  _shareQuestion =  () => {
     GoogleAnalytics.eventShareQuestion();
 
     try {

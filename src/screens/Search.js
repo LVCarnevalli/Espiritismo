@@ -1,16 +1,24 @@
+import { Feather } from '@expo/vector-icons';
 import SearchList, { HighlightableText } from '@unpourtous/react-native-search-list';
 import * as _ from 'lodash';
 import React from 'react';
-import { StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { HeaderBackButton } from 'react-navigation';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import MenuIcon from '../components/MenuIcon';
 import { TextNormal } from '../components/StyledText';
+import Layout from '../constants/Layout';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 import { loadQuestions, updateQuestions } from '../store/actions/QuestionAction';
 
 class Search extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      header: null,
+    };
+  };
+
   constructor(props) {
     super(props);
     GoogleAnalytics.pageHit('Search');
@@ -87,13 +95,23 @@ class Search extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#F00" barStyle="light-content" />
+        {Platform.OS === 'ios' || <View style={{ height: 8, backgroundColor: '#2196f3' }}></View>}
         <SearchList
           data={this.state.dataSource}
           hideSectionList={true}
           renderRow={this._renderRow}
           renderEmptyResult={this._renderEmptyResult}
           renderBackButton={() => (
-            <MenuIcon navigation={this.props.navigation} iconStyle={{ color: '#FFFFFF' }} />
+            <HeaderBackButton
+              onPress={() => this.props.navigation.navigate('Menu')}
+              backImage={
+                <Feather
+                  name="home"
+                  size={30}
+                  style={{ color: '#FFFFFF', paddingLeft: Layout.headerPadding }}
+                />
+              }
+            />
           )}
           renderRightButton={() => <View style={{ paddingRight: 40 }}></View>}
           renderEmpty={this._renderEmpty}
