@@ -16,10 +16,6 @@ class ActionSheet extends React.Component {
         options: [...options, 'Cancelar'],
         cancelButtonIndex: options.length,
         showSeparators: true,
-        textStyle: styles.textStyle,
-        titleTextStyle: styles.titleTextStyle,
-        messageTextStyle: styles.messageTextStyle,
-        containerStyle: styles.containerStyle,
       },
       buttonIndex => {
         onSelection(buttonIndex);
@@ -47,25 +43,6 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     paddingRight: 10,
-  },
-  textStyle: {
-    fontSize: 20,
-    fontWeight: '500',
-    color: 'blue',
-  },
-  titleTextStyle: {
-    fontSize: 24,
-    textAlign: 'center',
-    fontWeight: '700',
-    color: 'orange',
-  },
-  messageTextStyle: {
-    fontSize: 12,
-    color: 'purple',
-    textAlign: 'right',
-  },
-  containerStyle: {
-    backgroundColor: 'lightgrey',
   },
 });
 

@@ -1373,6 +1373,11 @@
     wcwidth "^1.0.1"
     ws "^1.1.0"
 
+"@react-native-community/viewpager@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@react-native-community/viewpager/-/viewpager-1.1.7.tgz#7d3b1631f1ec91145db92a8e25c80d53027e96ba"
+  integrity sha512-k9v2KJtAprNPq7IZmedD2VLMePvPW+ohX3uDnkpoKritBji+/RtRmTKrdtPi3Uvp0toq/KtPttAds1dr7AZNpw==
+
 "@types/babel__core@^7.1.0":
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.6.tgz#16ff42a5ae203c9af1c6e190ed1f30f83207b610"
@@ -6833,6 +6838,11 @@ react-native-settings-list@^1.8.0:
     create-react-class "^15.6.2"
     prop-types "^15.5.10"
 
+react-native-share@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-3.1.0.tgz#654997beae455dd3b8e5e107c12d0b6110df2f18"
+  integrity sha512-GDZywjNZip7QtsOAJpV+CLOVijaiu2wSbsYuP6/TroSi5Q9DwHl8p1ls0QefjJTL6I3bKHjczGlU8OjzwSKIvA==
+
 react-native-svg@9.13.3:
   version "9.13.3"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.13.3.tgz#6414b337d55af169ac2487ab70f3108404434446"
@@ -6841,11 +6851,12 @@ react-native-svg@9.13.3:
     css-select "^2.0.2"
     css-tree "^1.0.0-alpha.37"
 
-react-native-swiper@^1.5.14:
-  version "1.5.14"
-  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.14.tgz#1c6f949ca377186300f972bb0f30d24062c899aa"
-  integrity sha512-Kn0fxKooN7Shwu1qJYHB+Y8ssXXnvrIwReHXU5jCdyYNfz2QbBv0Cv3sa2Mqzr+XgzORCFFIokc8uCCUITDrVA==
+react-native-swiper@1.6.0-dev:
+  version "1.6.0-dev"
+  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.6.0-dev.tgz#2e80d138bf9f020655ab0d8beeb78f6526326233"
+  integrity sha512-Td3rFN6JCY33kSp7ox64L4mN/rUe7BstrHygkjz+/CzwQh1FBJDdSV9wFFEtVEXNrwoNUokFmUxmYc5YVQE4eg==
   dependencies:
+    "@react-native-community/viewpager" "^1.1.7"
     prop-types "^15.5.10"
 
 react-native-tab-view@^0.0.77:

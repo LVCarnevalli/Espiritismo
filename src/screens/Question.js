@@ -35,11 +35,18 @@ class Question extends React.Component {
                 'Citações',
                 'As frases que estão logo após as perguntas é a resposta dos Espíritos, já o texto que segue em itálico são as considerações de Allan Kardec e as citações no final são notas do tradutor.\n\n' +
                   'O aplicativo "Espiritismo" se baseia nas obras de Allan Kardec com a tradução e notas do J. Herculano Pires sem fins lucrativos. A utilização e leitura através do aplicativo não dispensa a leitura das obras de Allan Kardec.',
-                [],
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => {},
+                  },
+                ],
                 { cancelable: true }
               );
             } else if (index == 1) {
-              navigation.getParam('shared')();
+              navigation
+                .getParam('shared')()
+                .bind(this);
             }
           }}
         />
@@ -160,19 +167,22 @@ class Question extends React.Component {
 
   _shareQuestion = () => {
     GoogleAnalytics.eventShareQuestion();
-    Share.share(
-      {
-        message: `Espiritismo - O Livro dos Espíritos\nQuestão ${
-          this.state.actualQuestion.number
-        }\n${this.state.actualQuestion.category}\nPergunta: ${
-          this.state.actualQuestion.question
-        }\nResposta: ${this._formatMessage(this.state.actualQuestion.answer)}`,
-        title: 'O Livro dos Espíritos',
-      },
-      {
-        dialogTitle: 'Compartilhar',
-      }
-    );
+
+    try {
+      Share.share(
+        {
+          message: `Espiritismo - O Livro dos Espíritos\nQuestão ${
+            this.state.actualQuestion.number
+          }\n${this.state.actualQuestion.category}\nPergunta: ${
+            this.state.actualQuestion.question
+          }\nResposta: ${this._formatMessage(this.state.actualQuestion.answer)}`,
+          title: 'O Livro dos Espíritos',
+        },
+        {
+          dialogTitle: 'Compartilhar',
+        }
+      );
+    } catch (error) {}
   };
 
   _renderGesture() {
