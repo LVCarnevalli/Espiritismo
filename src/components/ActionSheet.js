@@ -3,6 +3,7 @@ import { Feather } from '@expo/vector-icons';
 import * as React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { HeaderBackButton } from 'react-navigation';
+
 import Layout from '../constants/Layout';
 
 class ActionSheet extends React.Component {
@@ -11,17 +12,22 @@ class ActionSheet extends React.Component {
     options: [],
   };
 
+  _execute = (buttonIndex) => {
+    const { onSelection } = this.props;
+    setTimeout(() => {
+      onSelection(buttonIndex);
+    }, 350)
+  }
+
   _showActionSheet = () => {
-    const { options, onSelection } = this.props;
+    const { options } = this.props;
     this.props.showActionSheetWithOptions(
       {
         options: [...options, 'Cancelar'],
         cancelButtonIndex: options.length,
         showSeparators: true,
       },
-      buttonIndex => {
-        onSelection(buttonIndex);
-      }
+      this._execute
     );
   };
 
