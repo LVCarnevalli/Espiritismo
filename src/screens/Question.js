@@ -87,6 +87,8 @@ class Question extends React.Component {
         firstLaunch: true,
       });
     }
+
+    this.props.hideLoading();
   }
 
   componentDidMount() {
@@ -157,8 +159,6 @@ class Question extends React.Component {
       actualQuestion: items[0],
       items: items,
     });
-
-    this.props.hideLoading();
   }
 
   _formatMessage(message) {
