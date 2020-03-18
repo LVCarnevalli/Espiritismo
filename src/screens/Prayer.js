@@ -85,7 +85,7 @@ class Prayer extends React.Component {
           contentContainerStyle={styles.list}
           data={this.props.prayer.result}
           renderItem={({ item }) => this._renderItem(item)}
-          keyExtractor={item => item.name}
+          keyExtractor={item => item.name + item.description}
         />
       </View>
     );
@@ -145,6 +145,8 @@ const styles = StyleSheet.create({
   },
   description: {
     color: '#fff',
+    textAlign: 'center',
+    alignItems: 'center',
   },
   listItem: {
     margin: 3,
