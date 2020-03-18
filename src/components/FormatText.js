@@ -39,7 +39,7 @@ class FormatText extends React.Component {
                 <Ionicons name="md-quote" size={70} color={'#D3D3D3'} />
               </View>
               <View style={styles.containerTextCitation}>
-                <Text style={[this.props.style, {fontFamily: null}, styles.textCitation]}>
+                <Text style={[this.props.style, styles.textCitation]}>
                   {this._format(value)}
                 </Text>
               </View>
