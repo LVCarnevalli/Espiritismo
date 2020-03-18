@@ -1,8 +1,9 @@
-import { FIRST_LAUNCH_INIT, OFFLINE_INIT } from '../actions/GlobalAction';
+import { FIRST_LAUNCH_INIT, OFFLINE_INIT, LOADING } from '../actions/GlobalAction';
 
 const INITIAL_STATE = {
   firstLaunch: true,
   offline: false,
+  loading: false
 };
 
 export default function globalReducer(state = INITIAL_STATE, action) {
@@ -12,6 +13,9 @@ export default function globalReducer(state = INITIAL_STATE, action) {
 
     case OFFLINE_INIT:
       return { ...state, offline: action.value };
+
+    case LOADING:
+      return { ...state, loading: action.value };
 
     default:
       return state;

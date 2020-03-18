@@ -23,6 +23,7 @@ import ignoreWarnings from 'react-native-ignore-warnings';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import Loading from './src/components/Loading';
 import AppNavigator from './src/navigation/SwitchNavigator';
 import configureStore from './src/store/Store';
 
@@ -79,6 +80,7 @@ class App extends React.Component {
         require('./assets/images/IconRead.png'),
         require('./assets/images/IconSave.png'),
         require('./assets/images/IconLove.png'),
+        require('./assets/images/Loading.gif'),
       ]),
       Font.loadAsync({
         ...Icon.Feather.font,
@@ -117,6 +119,7 @@ class App extends React.Component {
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           <Provider store={store}>
+            <Loading />
             <PersistGate loading={null} persistor={persistor}>
               <ActionSheetProvider>
                 <AppNavigator />

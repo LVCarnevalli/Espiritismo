@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { TextBold, TextNormal } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
+import { showLoading } from '../store/actions/GlobalAction';
 
 class Booking extends React.Component {
   _isMounted = false;
@@ -70,7 +71,12 @@ class Booking extends React.Component {
           </TextNormal>
         </View>
         <View style={styles.footer}>
-          <TouchableOpacity style={styles.nextContainer} onPress={this._next}>
+          <TouchableOpacity
+            style={styles.nextContainer}
+            onPress={() => {
+              this.props.showLoading();
+              setTimeout(this._next, 100);
+            }}>
             <TextBold style={styles.nextText}>
               {this.props.question.indexBookingRead > 0 ? 'CONTINUAR' : 'INICIAR'}
             </TextBold>
@@ -134,4 +140,10 @@ function mapStateToProps({ question }) {
   return { question };
 }
 
-export default connect(mapStateToProps, null)(Booking);
+function mapDispatchToProps(dispatch) {
+  return {
+    showLoading: () => showLoading(dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Booking);

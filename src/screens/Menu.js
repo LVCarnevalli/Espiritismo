@@ -6,6 +6,8 @@ import { FlatList, Image, StyleSheet, TouchableOpacity, View } from 'react-nativ
 
 import { TextBold, TextNormal } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
+import { showLoading } from '../store/actions/GlobalAction';
+import { connect } from 'react-redux';
 
 class Menu extends React.Component {
   state = {
@@ -25,6 +27,7 @@ class Menu extends React.Component {
         footer: 'Leia sem compromisso',
         image: require('../../assets/images/IconQuestion.png'),
         link: 'Question',
+        loading: true
       },
       {
         id: 3,
@@ -68,7 +71,7 @@ class Menu extends React.Component {
     GoogleAnalytics.pageHit('Menu');
   }
 
-  _clickEventListener(item) {
+   _clickEventListener = (item) => {
     this.props.navigation.navigate(item.link);
   }
 
@@ -88,7 +91,10 @@ class Menu extends React.Component {
                 style={[styles.card, { backgroundColor: item.color }]}
                 disabled={!item.link}
                 onPress={() => {
-                  this._clickEventListener(item);
+                  if(!!item.loading) {
+                    this.props.showLoading();
+                  }
+                  setTimeout(() => this._clickEventListener(item), 100);
                 }}>
                 <View style={[styles.cardHeader, styles.table]}>
                   <View style={styles.column}>
@@ -175,4 +181,14 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Menu;
+function mapStateToProps() {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    showLoading: () => showLoading(dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

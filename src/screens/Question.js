@@ -11,7 +11,7 @@ import FormatText from '../components/FormatText';
 import { TextBold, TextLight } from '../components/StyledText';
 import Layout from '../constants/Layout';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
-import { updateNotFirstLaunch } from '../store/actions/GlobalAction';
+import { updateNotFirstLaunch, hideLoading } from '../store/actions/GlobalAction';
 import {
   readBookingQuestions,
   readQuestions,
@@ -37,7 +37,7 @@ class Question extends React.Component {
                   'O aplicativo "Espiritismo" se baseia nas obras de Allan Kardec com a tradução e notas do J. Herculano Pires sem fins lucrativos. A utilização e leitura através do aplicativo não dispensa a leitura das obras de Allan Kardec.',
                 [
                   {
-                    text: 'OK',
+                    text: 'Fechar',
                     onPress: () => {},
                   },
                 ],
@@ -157,6 +157,8 @@ class Question extends React.Component {
       actualQuestion: items[0],
       items: items,
     });
+
+    this.props.hideLoading();
   }
 
   _formatMessage(message) {
@@ -371,6 +373,7 @@ function mapStateToProps({ question, global }) {
 function mapDispatchToProps(dispatch) {
   return {
     updateNotFirstLaunch: () => updateNotFirstLaunch(dispatch),
+    hideLoading: () => hideLoading(dispatch),
     readQuestions: question => readQuestions(dispatch, question),
     readBookingQuestions: question => readBookingQuestions(dispatch, question),
     updateIndexBookingQuestions: index => updateIndexBookingQuestions(dispatch, index),

@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { TextNormal } from '../components/StyledText';
 import Layout from '../constants/Layout';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
+import { showLoading } from '../store/actions/GlobalAction';
 import { loadQuestions, updateQuestions } from '../store/actions/QuestionAction';
 
 class Search extends React.Component {
@@ -51,7 +52,11 @@ class Search extends React.Component {
 
   _renderRow = (item, sectionID, rowID, highlightRowFunc, isSearching) => {
     return (
-      <TouchableOpacity onPress={() => this._openQuestion(item)}>
+      <TouchableOpacity
+        onPress={() => {
+          this.props.showLoading();
+          setTimeout(() => this._openQuestion(item), 100);
+        }}>
         <View key={rowID} style={{ flex: 1, marginLeft: 20, height: 50, justifyContent: 'center' }}>
           <HighlightableText
             matcher={item.matcher}
@@ -173,13 +178,9 @@ function mapStateToProps({ question, global }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    {
-      loadQuestions,
-      updateQuestions,
-    },
-    dispatch
-  );
+  return {
+    showLoading: () => showLoading(dispatch),
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

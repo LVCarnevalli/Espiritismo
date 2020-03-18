@@ -6794,7 +6794,7 @@ react-native-ignore-warnings@^0.1.1:
   dependencies:
     ignore-warnings "0.1.0"
 
-react-native-loading-spinner-overlay@^1.0.1:
+react-native-loading-spinner-overlay@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-loading-spinner-overlay/-/react-native-loading-spinner-overlay-1.1.0.tgz#169b2cdb939cf49186640dc2f50718c57e4d9a00"
   integrity sha512-PMTMM4zdQkZlORKWzHhDTlFicMfDHz5vbAfwxUnQbVeGwdFezZKG7J/0KyJMtOUPZYzUjouo+uIOoydYM/Xt+A==
