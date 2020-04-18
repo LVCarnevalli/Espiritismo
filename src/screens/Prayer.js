@@ -3,7 +3,7 @@ import React from 'react';
 import { FlatList, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
-
+import * as _ from 'lodash';
 import { TextBold, TextLight, TextNormal } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 
@@ -83,7 +83,7 @@ class Prayer extends React.Component {
 
         <FlatList
           contentContainerStyle={styles.list}
-          data={this.props.prayer.result}
+          data={_.orderBy(this.props.prayer.result, [item => item.name.toLowerCase()], ['asc'])}
           renderItem={({ item }) => this._renderItem(item)}
           keyExtractor={item => item.name + item.description}
         />
