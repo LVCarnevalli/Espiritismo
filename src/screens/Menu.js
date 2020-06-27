@@ -16,8 +16,9 @@ class Menu extends React.Component {
         id: 1,
         title: 'Kardec',
         color: '#0984e3',
-        footer: 'Em breve, aguarde...',
+        footer: 'O codificador',
         image: require('../../assets/images/IconLightbulb.png'),
+        link: 'Kardec'
       },
       {
         id: 2,

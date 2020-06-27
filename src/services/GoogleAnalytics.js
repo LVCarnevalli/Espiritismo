@@ -27,6 +27,10 @@ const eventSelectPrayer = name => {
   analytics.event(new Event('prayer', name, null, null));
 };
 
+const eventSelectBook = name => {
+  analytics.event(new Event('book', name, null, null));
+};
+
 export {
   pageHit,
   eventSwipeQuestion,
@@ -34,4 +38,5 @@ export {
   eventBookingQuestion,
   eventSearchQuestion,
   eventSelectPrayer,
+  eventSelectBook,
 };
