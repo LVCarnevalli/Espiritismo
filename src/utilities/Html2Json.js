@@ -1,6 +1,6 @@
 (function(global) {
   const DEBUG = false;
-  var debug = DEBUG ? console.log.bind(console) : function(){};
+  var debug = DEBUG ? console.log.bind(console) : function() {};
 
   if (typeof module === 'object' && typeof module.exports === 'object') {
     require('./HtmlParser.js');
@@ -124,22 +124,41 @@
 
   global.json2html = function json2html(json) {
     // Empty Elements - HTML 4.01
-    var empty = ['area', 'base', 'basefont', 'br', 'col', 'frame', 'hr', 'img', 'input', 'isindex', 'link', 'meta', 'param', 'embed'];
+    var empty = [
+      'area',
+      'base',
+      'basefont',
+      'br',
+      'col',
+      'frame',
+      'hr',
+      'img',
+      'input',
+      'isindex',
+      'link',
+      'meta',
+      'param',
+      'embed',
+    ];
 
     var child = '';
     if (json.child) {
-      child = json.child.map(function(c) {
-        return json2html(c);
-      }).join('');
+      child = json.child
+        .map(function(c) {
+          return json2html(c);
+        })
+        .join('');
     }
 
     var attr = '';
     if (json.attr) {
-      attr = Object.keys(json.attr).map(function(key) {
-        var value = json.attr[key];
-        if (Array.isArray(value)) value = value.join(' ');
-        return key + '=' + q(value);
-      }).join(' ');
+      attr = Object.keys(json.attr)
+        .map(function(key) {
+          var value = json.attr[key];
+          if (Array.isArray(value)) value = value.join(' ');
+          return key + '=' + q(value);
+        })
+        .join(' ');
       if (attr !== '') attr = ' ' + attr;
     }
 

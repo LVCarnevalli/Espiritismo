@@ -12,12 +12,12 @@ class ActionSheet extends React.Component {
     options: [],
   };
 
-  _execute = (buttonIndex) => {
+  _execute = buttonIndex => {
     const { onSelection } = this.props;
     setTimeout(() => {
       onSelection(buttonIndex);
-    }, 350)
-  }
+    }, 350);
+  };
 
   _showActionSheet = () => {
     const { options } = this.props;

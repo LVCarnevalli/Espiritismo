@@ -1,9 +1,10 @@
 import React from 'react';
 import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
+
 import { TextBold, TextNormal } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 import { showLoading } from '../store/actions/GlobalAction';
-import { connect } from 'react-redux';
 
 class Kardec extends React.Component {
   state = {
@@ -13,7 +14,7 @@ class Kardec extends React.Component {
         title: 'Quem foi Kardec?',
         color: '#0984e3',
         subTitle: 'Um pouco mais sobre sua história',
-        link: 'History'
+        link: 'History',
       },
       {
         id: 2,
@@ -24,9 +25,9 @@ class Kardec extends React.Component {
       },
       {
         id: 3,
-        title: 'Outras obras',
+        title: 'Livros fundamentais',
         color: '#e17055',
-        subTitle: 'Conheça as obras literárias',
+        subTitle: 'Escrito por Kardec e Espíritos',
         link: 'Books',
       },
     ],
@@ -37,9 +38,9 @@ class Kardec extends React.Component {
     GoogleAnalytics.pageHit('Kardec');
   }
 
-  _clickEventListener = (item) => {
+  _clickEventListener = item => {
     this.props.navigation.navigate(item.link);
-  }
+  };
 
   render() {
     return (
@@ -55,7 +56,7 @@ class Kardec extends React.Component {
               <TouchableOpacity
                 disabled={!item.link}
                 onPress={() => {
-                  if(!!item.loading) {
+                  if (!!item.loading) {
                     this.props.showLoading();
                   }
                   setTimeout(() => this._clickEventListener(item), 100);
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   listContainer: {
     paddingVertical: 6,
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     color: '#FFFFFF',
     fontWeight: 'bold',
   },

@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
-import * as GoogleAnalytics from '../../services/GoogleAnalytics';
+import { ScrollView, StyleSheet, View } from 'react-native';
+
 import { TextBold, TextNormal } from '../../components/StyledText';
+import * as GoogleAnalytics from '../../services/GoogleAnalytics';
 
 class Spiritism extends React.Component {
-
   constructor(props) {
     super(props);
     GoogleAnalytics.pageHit('KardecSpiritism');
@@ -16,17 +16,23 @@ class Spiritism extends React.Component {
         <View style={styles.container}>
           <View>
             <TextNormal style={[styles.text, styles.wrapLine]}>
-              <TextBold>Espiritismo</TextBold> é uma doutrina fundamentada na existência da alma, que sobrevive a morte do corpo físico, mantendo-se a sua individualidade, integridade e consciência.
+              <TextBold>Espiritismo</TextBold> é uma doutrina fundamentada na existência da alma,
+              que sobrevive a morte do corpo físico, mantendo-se a sua individualidade, integridade
+              e consciência.
             </TextNormal>
           </View>
           <View>
             <TextNormal style={[styles.text, styles.wrapLine]}>
-              O Espiritismo baseia-se nos postulados passados por vários seres espirituais e codificados por Allan Kardec, através da comunicação mediúnica, com a participação dos médiuns, pessoas que desenvolveram a capacidade de comunicação entre seres do mundo físico, material e seres do mundo astral, espiritual.
+              O Espiritismo baseia-se nos postulados passados por vários seres espirituais e
+              codificados por Allan Kardec, através da comunicação mediúnica, com a participação dos
+              médiuns, pessoas que desenvolveram a capacidade de comunicação entre seres do mundo
+              físico, material e seres do mundo astral, espiritual.
             </TextNormal>
           </View>
           <View>
             <TextNormal style={[styles.text, styles.wrapLine]}>
-              A abrangência do Espiritismo está na sua visão do homem integral e imortal e do propósito universal da evolução do ser.
+              A abrangência do Espiritismo está na sua visão do homem integral e imortal e do
+              propósito universal da evolução do ser.
             </TextNormal>
           </View>
           <View>
@@ -36,10 +42,11 @@ class Spiritism extends React.Component {
           </View>
           <View>
             <TextNormal style={styles.footer}>
-              Resumo escrito por nós do aplicativo Espiritismo com referências do livro "O que é o Espiritismo" autor "Allan Kardec".
+              Resumo escrito por nós do aplicativo Espiritismo com referências da doutrina Espírita.
             </TextNormal>
             <TextNormal style={styles.footer}>
-              O entendimento do Espiritismo é muito mais abrangente, para maior esclarecimento você precisa conhecer as outros obras de Kardec.
+              O entendimento do Espiritismo é muito mais abrangente, para maior esclarecimento é
+              preciso conhecer os outros livros de Kardec.
             </TextNormal>
           </View>
         </View>
@@ -66,11 +73,11 @@ const styles = StyleSheet.create({
   },
   footer: {
     fontSize: 15,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   title: {
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });
 
 export default Spiritism;

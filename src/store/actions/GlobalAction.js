@@ -12,8 +12,8 @@ export const updateOffline = () => dispatch => {
 
 export function showLoading(dispatch) {
   dispatch({ type: LOADING, value: true });
-};
+}
 
 export function hideLoading(dispatch) {
   dispatch({ type: LOADING, value: false });
-};
+}

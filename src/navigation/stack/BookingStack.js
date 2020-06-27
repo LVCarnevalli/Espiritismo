@@ -3,8 +3,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { HeaderBackButton } from 'react-navigation';
 
-import BookingScreen from '../../screens/Booking';
 import Layout from '../../constants/Layout';
+import BookingScreen from '../../screens/Booking';
 
 const BookingStack = {
   screen: BookingScreen,
@@ -27,7 +27,13 @@ const BookingStack = {
     headerLeft: (
       <HeaderBackButton
         onPress={() => navigation.navigate('Menu')}
-        backImage={<Feather name="home" size={30} style={{ color: '#FFFFFF', paddingLeft: Layout.headerPadding }} />}
+        backImage={
+          <Feather
+            name="home"
+            size={30}
+            style={{ color: '#FFFFFF', paddingLeft: Layout.headerPadding }}
+          />
+        }
       />
     ),
   }),

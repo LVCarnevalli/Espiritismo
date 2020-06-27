@@ -2,8 +2,8 @@ import { Feather } from '@expo/vector-icons';
 import React from 'react';
 import { HeaderBackButton } from 'react-navigation';
 
-import QuestionScreen from '../../screens/Question';
 import Layout from '../../constants/Layout';
+import QuestionScreen from '../../screens/Question';
 
 const options = ({ navigation }) => ({
   headerTitleStyle: {
@@ -16,7 +16,7 @@ const options = ({ navigation }) => ({
   headerLeft: (
     <HeaderBackButton
       onPress={() => navigation.navigate('Menu')}
-      backImage={<Feather name="home" size={30} style={{paddingLeft: Layout.headerPadding}}/>}
+      backImage={<Feather name="home" size={30} style={{ paddingLeft: Layout.headerPadding }} />}
     />
   ),
 });

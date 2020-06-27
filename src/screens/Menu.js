@@ -3,11 +3,11 @@
 
 import React from 'react';
 import { FlatList, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 
 import { TextBold, TextNormal } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 import { showLoading } from '../store/actions/GlobalAction';
-import { connect } from 'react-redux';
 
 class Menu extends React.Component {
   state = {
@@ -18,7 +18,7 @@ class Menu extends React.Component {
         color: '#0984e3',
         footer: 'O codificador',
         image: require('../../assets/images/IconLightbulb.png'),
-        link: 'Kardec'
+        link: 'Kardec',
       },
       {
         id: 2,
@@ -28,7 +28,7 @@ class Menu extends React.Component {
         footer: 'Leia sem compromisso',
         image: require('../../assets/images/IconQuestion.png'),
         link: 'Question',
-        loading: true
+        loading: true,
       },
       {
         id: 3,
@@ -72,9 +72,9 @@ class Menu extends React.Component {
     GoogleAnalytics.pageHit('Menu');
   }
 
-   _clickEventListener = (item) => {
+  _clickEventListener = item => {
     this.props.navigation.navigate(item.link);
-  }
+  };
 
   render() {
     return (
@@ -92,7 +92,7 @@ class Menu extends React.Component {
                 style={[styles.card, { backgroundColor: item.color }]}
                 disabled={!item.link}
                 onPress={() => {
-                  if(!!item.loading) {
+                  if (!!item.loading) {
                     this.props.showLoading();
                   }
                   setTimeout(() => this._clickEventListener(item), 100);

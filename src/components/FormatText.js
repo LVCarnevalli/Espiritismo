@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { TextBold, TextItalic, TextNormal } from './StyledText';
 
@@ -39,9 +39,7 @@ class FormatText extends React.Component {
                 <Ionicons name="md-quote" size={70} color={'#D3D3D3'} />
               </View>
               <View style={styles.containerTextCitation}>
-                <Text style={[this.props.style, styles.textCitation]}>
-                  {this._format(value)}
-                </Text>
+                <Text style={[this.props.style, styles.textCitation]}>{this._format(value)}</Text>
               </View>
             </View>
           );
@@ -54,7 +52,7 @@ class FormatText extends React.Component {
         }
       } else {
         return (
-          <Text key={key} style={[this.props.style, {fontFamily: null}]}>
+          <Text key={key} style={[this.props.style, { fontFamily: null }]}>
             {value.text}
           </Text>
         );

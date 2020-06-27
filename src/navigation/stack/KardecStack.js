@@ -1,10 +1,10 @@
-import * as React from 'react';
-
-import KardecScreen from '../../screens/Kardec';
-import { HeaderBackButton } from 'react-navigation';
 import { Feather } from '@expo/vector-icons';
-import Layout from '../../constants/Layout';
+import * as React from 'react';
 import { View } from 'react-native';
+import { HeaderBackButton } from 'react-navigation';
+
+import Layout from '../../constants/Layout';
+import KardecScreen from '../../screens/Kardec';
 
 const KardecStack = {
   screen: KardecScreen,
@@ -23,12 +23,8 @@ const KardecStack = {
       flex: 1,
     },
     headerRight: <View></View>,
-    headerLeft: (
-      <HeaderBackButton
-        onPress={() => navigation.navigate('Menu')} tintColor={'#000'}/>
-    ),
+    headerLeft: <HeaderBackButton onPress={() => navigation.navigate('Menu')} tintColor={'#000'} />,
   }),
 };
 
 export default KardecStack;
-

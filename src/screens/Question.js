@@ -11,7 +11,7 @@ import FormatText from '../components/FormatText';
 import { TextBold, TextLight } from '../components/StyledText';
 import Layout from '../constants/Layout';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
-import { updateNotFirstLaunch, hideLoading } from '../store/actions/GlobalAction';
+import { hideLoading, updateNotFirstLaunch } from '../store/actions/GlobalAction';
 import {
   readBookingQuestions,
   readQuestions,
@@ -165,7 +165,7 @@ class Question extends React.Component {
     return message.replace(/\n/g, ' ').replace(/<[^>]*>/g, '');
   }
 
-  _shareQuestion =  () => {
+  _shareQuestion = () => {
     GoogleAnalytics.eventShareQuestion();
 
     try {

@@ -1,15 +1,16 @@
 import React from 'react';
 import { View } from 'react-native';
+import { HeaderBackButton } from 'react-navigation';
 
 import BooksScreen from '../../../screens/kardec/Books';
-import { HeaderBackButton } from 'react-navigation';
 
 const BooksStack = {
   screen: BooksScreen,
   navigationOptions: ({ navigation }) => ({
-    headerTitle: 'Outras obras',
-    headerLeft: <HeaderBackButton onPress={() => navigation.navigate('Kardec')}
-                                  tintColor={'#000'}/>,
+    headerTitle: 'Livros fundamentais',
+    headerLeft: (
+      <HeaderBackButton onPress={() => navigation.navigate('Kardec')} tintColor={'#000'} />
+    ),
     headerTintColor: '#000',
     headerTitleStyle: {
       fontSize: 18,
