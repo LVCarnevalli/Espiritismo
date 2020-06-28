@@ -6,12 +6,7 @@ import * as Font from 'expo-font';
 import * as firebase from 'firebase';
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import {
-  FIREBASE_API_KEY,
-  FIREBASE_AUTH_DOMAIN,
-  FIREBASE_DATABASE_URL,
-  FIREBASE_PROJECT_ID,
-} from 'react-native-dotenv';
+import * as FirebaseCore from 'expo-firebase-core';
 import {
   setCustomImage,
   setCustomText,
@@ -58,12 +53,7 @@ class App extends React.Component {
     super(props);
 
     if (!firebase.apps.length) {
-      firebase.initializeApp({
-        apiKey: FIREBASE_API_KEY,
-        authDomain: FIREBASE_AUTH_DOMAIN,
-        databaseURL: FIREBASE_DATABASE_URL,
-        projectId: FIREBASE_PROJECT_ID,
-      });
+      firebase.initializeApp(FirebaseCore.DEFAULT_APP_OPTIONS);
     }
   }
 

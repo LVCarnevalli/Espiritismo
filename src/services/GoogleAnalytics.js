@@ -1,34 +1,34 @@
-import { Analytics, Event, PageHit } from 'expo-analytics';
-import { GOOGLE_ANALYTICS_TRACKING_ID } from 'react-native-dotenv';
+import * as Analytics from 'expo-firebase-analytics';
 
-const analytics = new Analytics(GOOGLE_ANALYTICS_TRACKING_ID);
-
-const pageHit = page => {
-  analytics.hit(new PageHit(page));
+const pageHit = currentRouteName => {
+  Analytics.setCurrentScreen (
+    currentRouteName,
+    currentRouteName
+  );
 };
 
 const eventSwipeQuestion = () => {
-  analytics.event(new Event('question', 'swipe', null, null));
+  Analytics.logEvent('SwipeQuestion', {});
 };
 
 const eventShareQuestion = () => {
-  analytics.event(new Event('question', 'share', null, null));
+  Analytics.logEvent('ShareQuestion', {});
 };
 
 const eventBookingQuestion = () => {
-  analytics.event(new Event('question', 'booking', null, null));
+  Analytics.logEvent('StartBooking', {});
 };
 
 const eventSearchQuestion = () => {
-  analytics.event(new Event('question', 'search', null, null));
+  Analytics.logEvent('SearchQuestion', {});
 };
 
 const eventSelectPrayer = name => {
-  analytics.event(new Event('prayer', name, null, null));
+  Analytics.logEvent('SelectPrayer', {});
 };
 
 const eventSelectBook = name => {
-  analytics.event(new Event('book', name, null, null));
+  Analytics.logEvent('SelectKardecBook', {});
 };
 
 export {
