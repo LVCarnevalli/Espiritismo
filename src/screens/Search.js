@@ -99,7 +99,6 @@ class Search extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor="#000" />
         {Platform.OS === 'ios' || <View style={{ height: 8, backgroundColor: '#2196f3' }}></View>}
         <SearchList
           data={this.state.dataSource}
