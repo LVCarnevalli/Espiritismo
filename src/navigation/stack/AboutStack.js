@@ -19,7 +19,7 @@ const AboutStack = {
       textAlign: 'center',
       flex: 1,
     },
-    headerRight: <View></View>,
+    headerRight: () => <View></View>,
   },
 };
 

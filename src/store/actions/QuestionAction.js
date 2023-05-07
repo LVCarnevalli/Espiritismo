@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import { getDatabase, onValue, ref } from 'firebase/database';
 
 export const LOAD_QUESTIONS_INIT = 'LOAD_QUESTIONS_INIT';
 export const LOAD_QUESTIONS_ERROR = 'LOAD_QUESTIONS_ERROR';
@@ -23,29 +23,28 @@ export function updateIndexBookingQuestions(dispatch, index) {
 
 export const loadQuestions = () => dispatch => {
   dispatch({ type: LOAD_QUESTIONS_INIT });
-  const connected = firebase.database().ref('.info/connected');
-  connected.on('value', function(snap) {
+  const db = getDatabase();
+  const connected = ref(db, '.info/connected');
+
+  onValue(connected, function(snap) {
     if (snap.val() === true) {
       dispatch({ type: OFFLINE_INIT, value: false });
 
       try {
-        firebase
-          .database()
-          .ref('Question/')
-          .once('value', function(snapshot) {
-            const obj = snapshot.val();
-            const result = Object.keys(obj).map(key => {
-              return obj[key];
-            });
-
-            dispatch({
-              type: LOAD_QUESTIONS_SUCCESS,
-              payload: {
-                result: result,
-              },
-            });
-            connected.off();
+        const dbquestion = ref(db, 'Question/');
+        onValue(dbquestion, function(snapshot) {
+          const obj = snapshot.val();
+          const result = Object.keys(obj).map(key => {
+            return obj[key];
           });
+
+          dispatch({
+            type: LOAD_QUESTIONS_SUCCESS,
+            payload: {
+              result: result,
+            },
+          });
+        });
       } catch (error) {
         dispatch({
           type: LOAD_QUESTIONS_ERROR,
@@ -61,21 +60,20 @@ export const loadQuestions = () => dispatch => {
 export const updateQuestions = () => dispatch => {
   try {
     dispatch({ type: OFFLINE_INIT, value: false });
-    firebase
-      .database()
-      .ref('Question/')
-      .once('value', function(snapshot) {
-        const obj = snapshot.val();
-        const result = Object.keys(obj).map(key => {
-          return obj[key];
-        });
 
-        dispatch({
-          type: UPDATE_QUESTIONS_SUCCESS,
-          payload: {
-            result: result,
-          },
-        });
+    const dbquestion = ref(db, 'Question/');
+    onValue(dbquestion, function(snapshot) {
+      const obj = snapshot.val();
+      const result = Object.keys(obj).map(key => {
+        return obj[key];
       });
+
+      dispatch({
+        type: UPDATE_QUESTIONS_SUCCESS,
+        payload: {
+          result: result,
+        },
+      });
+    });
   } catch (error) {}
 };

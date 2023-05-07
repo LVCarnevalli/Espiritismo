@@ -1,17 +1,15 @@
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator } from "@react-navigation/stack";
 
 import WelcomeScreen from '../../screens/Welcome';
 
-const WelcomeStack = createStackNavigator(
-  {
-    Welcome: WelcomeScreen,
-  },
-  {
+const WelcomeStack = {
+  screen: WelcomeScreen,
+  navigationOptions: {
     headerMode: 'none',
     navigationOptions: {
       tabBarVisible: false,
     },
   }
-);
+};
 
 export default WelcomeStack;

@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import * as React from 'react';
 import { View } from 'react-native';
-import { HeaderBackButton } from 'react-navigation';
+import { HeaderBackButton } from 'react-navigation-stack';
 
 import Layout from '../../constants/Layout';
 import KardecScreen from '../../screens/Kardec';
@@ -22,8 +22,8 @@ const KardecStack = {
       textAlign: 'center',
       flex: 1,
     },
-    headerRight: <View></View>,
-    headerLeft: <HeaderBackButton onPress={() => navigation.navigate('Menu')} tintColor={'#000'} />,
+    headerRight: () => <View></View>,
+    headerLeft: () => <HeaderBackButton labelVisible={false} onPress={() => navigation.navigate('Menu')} tintColor={'#000'} />,
   }),
 };
 

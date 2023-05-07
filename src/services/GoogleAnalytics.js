@@ -1,35 +1,16 @@
-import * as Analytics from 'expo-firebase-analytics';
+const pageHit = currentRouteName => {};
 
-const pageHit = currentRouteName => {
-  Analytics.setCurrentScreen (
-    currentRouteName,
-    currentRouteName
-  );
-};
+const eventSwipeQuestion = () => {};
 
-const eventSwipeQuestion = () => {
-  Analytics.logEvent('SwipeQuestion', {});
-};
+const eventShareQuestion = () => {};
 
-const eventShareQuestion = () => {
-  Analytics.logEvent('ShareQuestion', {});
-};
+const eventBookingQuestion = () => {};
 
-const eventBookingQuestion = () => {
-  Analytics.logEvent('StartBooking', {});
-};
+const eventSearchQuestion = () => {};
 
-const eventSearchQuestion = () => {
-  Analytics.logEvent('SearchQuestion', {});
-};
+const eventSelectPrayer = name => {};
 
-const eventSelectPrayer = name => {
-  Analytics.logEvent('SelectPrayer', {});
-};
-
-const eventSelectBook = name => {
-  Analytics.logEvent('SelectKardecBook', {});
-};
+const eventSelectBook = name => {};
 
 export {
   pageHit,

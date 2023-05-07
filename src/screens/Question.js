@@ -23,34 +23,6 @@ Array.prototype.flatMap = function(lambda) {
 };
 
 class Question extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTitle: navigation.getParam('title'),
-      headerRight: (
-        <ActionSheet
-          options={['Citações', 'Compartilhar']}
-          onSelection={index => {
-            if (index == 0) {
-              Alert.alert(
-                'Citações',
-                'As frases que estão logo após as perguntas é a resposta dos Espíritos, já o texto que segue em itálico são as considerações de Allan Kardec e as citações no final são notas do tradutor.\n\n' +
-                  'O aplicativo "Espiritismo" se baseia nas obras de Allan Kardec com a tradução e notas do J. Herculano Pires sem fins lucrativos. A utilização e leitura através do aplicativo não dispensa a leitura das obras de Allan Kardec.',
-                [
-                  {
-                    text: 'Fechar',
-                    onPress: () => {},
-                  },
-                ],
-                { cancelable: true }
-              );
-            } else if (index == 1) {
-              navigation.getParam('shared')();
-            }
-          }}
-        />
-      ),
-    };
-  };
 
   constructor(props) {
     super(props);
@@ -60,15 +32,15 @@ class Question extends React.Component {
       items: [],
       firstLaunch: false,
       actualQuestion: '',
-      questionBooking: this.props.navigation.getParam('questionBooking'),
-      booking: this.props.navigation.getParam('booking'),
+      questionBooking: this.props.route.params ? this.props.route.params.questionBooking : null,
+      booking: this.props.route.params ? this.props.route.params.booking : null,
       index: 0,
     };
   }
 
   UNSAFE_componentWillReceiveProps(newProps) {
-    let newQuestionProps = newProps.navigation.getParam('questionBooking');
-    let prevQuestionProps = this.props.navigation.getParam('questionBooking');
+    let newQuestionProps = newProps.route.params ? newProps.route.params.questionBooking : null;
+    let prevQuestionProps = this.props.route.params ? this.props.route.params.questionBooking : null;
     if (newQuestionProps !== prevQuestionProps) {
       this.setState(
         {
@@ -93,7 +65,6 @@ class Question extends React.Component {
 
   componentDidMount() {
     this.props.navigation.setParams({
-      shared: this._shareQuestion,
       title: 'O LIVRO DOS ESPÍRITOS',
     });
 
@@ -159,6 +130,32 @@ class Question extends React.Component {
       actualQuestion: items[0],
       items: items,
     });
+
+    this.props.navigation.setOptions({
+      headerRight: () => (
+        <ActionSheet
+          options={['Citações', 'Compartilhar']}
+          onSelection={index => {
+            if (index == 0) {
+              Alert.alert(
+                'Citações',
+                'As frases que estão logo após as perguntas é a resposta dos Espíritos, já o texto que segue em itálico são as considerações de Allan Kardec e as citações no final são notas do tradutor.\n\n' +
+                  'O aplicativo "Espiritismo" se baseia nas obras de Allan Kardec com a tradução e notas do J. Herculano Pires sem fins lucrativos. A utilização e leitura através do aplicativo não dispensa a leitura das obras de Allan Kardec.',
+                [
+                  {
+                    text: 'Fechar',
+                    onPress: () => {},
+                  },
+                ],
+                { cancelable: true }
+              );
+            } else if (index == 1) {
+              this._shareQuestion();
+            }
+          }}
+        />
+      ),
+    })
   }
 
   _formatMessage(message) {

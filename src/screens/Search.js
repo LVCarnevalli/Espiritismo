@@ -1,9 +1,7 @@
 import { Feather } from '@expo/vector-icons';
-import SearchList, { HighlightableText } from '@unpourtous/react-native-search-list';
-import * as _ from 'lodash';
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { HeaderBackButton } from 'react-navigation';
+import { HeaderBackButton } from 'react-navigation-stack';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -57,14 +55,9 @@ class Search extends React.Component {
           this.props.showLoading();
           setTimeout(() => this._openQuestion(item), 100);
         }}>
-        <View key={rowID} style={{ flex: 1, marginLeft: 20, height: 50, justifyContent: 'center' }}>
-          <HighlightableText
-            matcher={item.matcher}
-            text={item.searchStr}
-            textColor={'#000'}
-            hightlightTextColor={'#0069c0'}
-          />
-        </View>
+        <View
+          key={rowID}
+          style={{ flex: 1, marginLeft: 20, height: 50, justifyContent: 'center' }}></View>
       </TouchableOpacity>
     );
   };
@@ -100,40 +93,6 @@ class Search extends React.Component {
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' || <View style={{ height: 8, backgroundColor: '#2196f3' }}></View>}
-        <SearchList
-          data={this.state.dataSource}
-          hideSectionList={true}
-          renderRow={this._renderRow}
-          renderEmptyResult={this._renderEmptyResult}
-          renderBackButton={() => (
-            <HeaderBackButton
-              onPress={() => this.props.navigation.navigate('Menu')}
-              backImage={
-                <Feather
-                  name="home"
-                  size={30}
-                  style={{ color: '#FFFFFF', paddingLeft: Layout.headerPadding }}
-                />
-              }
-            />
-          )}
-          renderRightButton={() => <View style={{ paddingRight: 40 }}></View>}
-          renderEmpty={this._renderEmpty}
-          rowHeight={50}
-          toolbarBackgroundColor={'#2196f3'}
-          title="CAPÍTULOS"
-          cancelTitle="Fechar"
-          searchListBackgroundColor={'#2196f3'}
-          searchBarToggleDuration={300}
-          searchInputBackgroundColor={'#0069c0'}
-          searchInputBackgroundColorActive={'#6ec6ff'}
-          searchInputPlaceholderColor={'#FFF'}
-          searchInputTextColor={'#FFF'}
-          searchInputTextColorActive={'#000'}
-          searchInputPlaceholder="Buscar"
-          sectionIndexTextColor={'#6ec6ff'}
-          searchBarBackgroundColor={'#2196f3'}
-        />
       </View>
     );
   }

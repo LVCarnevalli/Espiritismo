@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { hideLoading } from '../store/actions/GlobalAction';
 
 class Loading extends React.Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.hideLoading();
   }
 

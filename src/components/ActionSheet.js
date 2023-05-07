@@ -2,7 +2,7 @@ import { connectActionSheet } from '@expo/react-native-action-sheet';
 import { Feather } from '@expo/vector-icons';
 import * as React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { HeaderBackButton } from 'react-navigation';
+import { HeaderBackButton } from 'react-navigation-stack';
 
 import Layout from '../constants/Layout';
 
@@ -36,8 +36,9 @@ class ActionSheet extends React.Component {
       <View style={styles.container}>
         <View style={styles.subContainer}>
           <HeaderBackButton
+            labelVisible={false}
             onPress={this._showActionSheet}
-            backImage={<Feather name="menu" size={30} />}
+            backImage={() => <Feather name="menu" size={30} />}
           />
         </View>
       </View>

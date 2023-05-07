@@ -18,6 +18,8 @@ const MenuStack = {
       textAlign: 'center',
       flex: 1,
     },
+    headerLeft: ()=> null,
+    gestureEnabled: false,
   },
 };
 

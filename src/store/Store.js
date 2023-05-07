@@ -1,14 +1,14 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
 import { persistCombineReducers, persistStore } from 'redux-persist';
-import storage from 'redux-persist/es/storage'; // default: localStorage if web, AsyncStorage if react-native
 import thunk from 'redux-thunk';
 
 import rootReducers from './reducers'; // where reducers is a object of reducers
 
 const config = {
   key: 'root',
-  storage,
+  storage: AsyncStorage,
   //debug: true //to get useful logging
 };
 const middleware = [];

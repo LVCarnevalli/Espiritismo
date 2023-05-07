@@ -1,12 +1,11 @@
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import * as Icon from '@expo/vector-icons';
-import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
-import * as firebase from 'firebase';
+import * as SplashScreen from 'expo-splash-screen';
+import * as firebase from 'firebase/app';
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import * as FirebaseCore from 'expo-firebase-core';
 import {
   setCustomImage,
   setCustomText,
@@ -14,26 +13,22 @@ import {
   setCustomTouchableOpacity,
   setCustomView,
 } from 'react-native-global-props';
-import ignoreWarnings from 'react-native-ignore-warnings';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-
 import Loading from './src/components/Loading';
 import AppNavigator from './src/navigation/SwitchNavigator';
 import configureStore from './src/store/Store';
 
-const { persistor, store } = configureStore();
+SplashScreen.preventAutoHideAsync();
 
-ignoreWarnings('Setting a timer');
-ignoreWarnings('componentWillReceiveProps has been renamed');
-ignoreWarnings('componentWillMount has been renamed');
-ignoreWarnings('componentWillUpdate has been renamed');
+const { persistor, store } = configureStore();
 
 const customFontFamily = {
   style: {
     fontFamily: 'open-sans-regular',
   },
 };
+
 setCustomText(customFontFamily);
 setCustomView(customFontFamily);
 setCustomTextInput(customFontFamily);
@@ -52,8 +47,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    if (!firebase.apps.length) {
-      firebase.initializeApp(FirebaseCore.DEFAULT_APP_OPTIONS);
+    if (!firebase.getApps().length) {
+      firebase.initializeApp({});
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      await this._loadResourcesAsync();
+    } catch (e) {
+      console.warn(e);
+    } finally {
+      this.setState({ isLoadingComplete: true });
+      await SplashScreen.hideAsync();
     }
   }
 
@@ -96,24 +102,10 @@ class App extends React.Component {
     ]);
   };
 
-  _handleLoadingError = error => {
-    // In this case, you might want to report the error to your error
-    // reporting service, for example Sentry
-    console.warn(error);
-  };
-
-  _handleFinishLoading = () => {
-    this.setState({ isLoadingComplete: true });
-  };
-
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
-        <AppLoading
-          startAsync={this._loadResourcesAsync}
-          onError={this._handleLoadingError}
-          onFinish={this._handleFinishLoading}
-        />
+         <></>
       );
     } else {
       return (

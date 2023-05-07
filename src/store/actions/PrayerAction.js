@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import { getDatabase, onValue, ref } from 'firebase/database';
 
 export const LOAD_PRAYERS_INIT = 'LOAD_PRAYERS_INIT';
 export const LOAD_PRAYERS_ERROR = 'LOAD_PRAYERS_ERROR';
@@ -8,29 +8,28 @@ export const OFFLINE_INIT = 'OFFLINE_INIT';
 
 export const loadPrayers = () => dispatch => {
   dispatch({ type: LOAD_PRAYERS_INIT });
-  const connected = firebase.database().ref('.info/connected');
-  connected.on('value', function(snap) {
+  const db = getDatabase();
+  const connected = ref(db, '.info/connected');
+
+  onValue(connected, function(snap) {
     if (snap.val() === true) {
       dispatch({ type: OFFLINE_INIT, value: false });
 
       try {
-        firebase
-          .database()
-          .ref('Prayer/')
-          .once('value', function(snapshot) {
-            const obj = snapshot.val();
-            const result = Object.keys(obj).map(key => {
-              return obj[key];
-            });
-
-            dispatch({
-              type: LOAD_PRAYERS_SUCCESS,
-              payload: {
-                result: result,
-              },
-            });
-            connected.off();
+        const dbqprayer = ref(db, 'Prayer/');
+        onValue(dbqprayer, function(snapshot) {
+          const obj = snapshot.val();
+          const result = Object.keys(obj).map(key => {
+            return obj[key];
           });
+
+          dispatch({
+            type: LOAD_PRAYERS_SUCCESS,
+            payload: {
+              result: result,
+            },
+          });
+        });
       } catch (error) {
         dispatch({
           type: LOAD_PRAYERS_ERROR,
@@ -46,21 +45,20 @@ export const loadPrayers = () => dispatch => {
 export const updatePrayers = () => dispatch => {
   try {
     dispatch({ type: OFFLINE_INIT, value: false });
-    firebase
-      .database()
-      .ref('Prayer/')
-      .once('value', function(snapshot) {
-        const obj = snapshot.val();
-        const result = Object.keys(obj).map(key => {
-          return obj[key];
-        });
 
-        dispatch({
-          type: UPDATE_PRAYERS_SUCCESS,
-          payload: {
-            result: result,
-          },
-        });
+    const dbqprayer = ref(db, 'Prayer/');
+    onValue(dbqprayer, function(snapshot) {
+      const obj = snapshot.val();
+      const result = Object.keys(obj).map(key => {
+        return obj[key];
       });
+
+      dispatch({
+        type: UPDATE_PRAYERS_SUCCESS,
+        payload: {
+          result: result,
+        },
+      });
+    });
   } catch (error) {}
 };
