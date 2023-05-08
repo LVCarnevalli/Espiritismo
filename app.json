@@ -31,6 +31,11 @@
       "permissions": [],
       "versionCode": 7,
       "googleServicesFile": "./google-services.json"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "661091f0-fb44-11e8-a374-7d6da91fc76f"
+      }
     }
   }
 }

@@ -29,12 +29,6 @@ const customFontFamily = {
   },
 };
 
-setCustomText(customFontFamily);
-setCustomView(customFontFamily);
-setCustomTextInput(customFontFamily);
-setCustomImage(customFontFamily);
-setCustomTouchableOpacity(customFontFamily);
-
 class App extends React.Component {
   static defaultProps = {
     skipLoadingScreen: false,
@@ -58,6 +52,12 @@ class App extends React.Component {
     } catch (e) {
       console.warn(e);
     } finally {
+      setCustomText(customFontFamily);
+      setCustomView(customFontFamily);
+      setCustomTextInput(customFontFamily);
+      setCustomImage(customFontFamily);
+      setCustomTouchableOpacity(customFontFamily);
+
       this.setState({ isLoadingComplete: true });
       await SplashScreen.hideAsync();
     }
