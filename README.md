@@ -3,8 +3,6 @@
 
 [DEPRECATED] Esse aplicativo NÃO ESTÁ SENDO MAIS ATUALIZADO, utilize agora o WEBSITE/APP: [espiritismo.dev](https://espiritismo.dev/)
 
-======================
-
 O aplicativo Espiritismo têm o objetivo de agrupar conteúdos espíritas e trazer até você de maneira fácil, produtiva e divertida. O projeto não visa fins lucrativos, sendo assim o aplicativo não contêm propagandas.
 
 <a href="https://play.google.com/store/apps/details?id=br.verdi.espiritismo">
