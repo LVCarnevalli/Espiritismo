@@ -84,10 +84,11 @@ class Menu extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button title="Aplicativo novo, clique aqui!" onPress={this._clickWarning} style={{
-          justifyContent: 'center',
-          backgroundColor: '#6638f0',
-        }} />
+        <TouchableOpacity onPress={this._clickWarning}  style={{ justifyContent: 'center', backgroundColor: '#6638f0' }}>
+          <View style={[styles.cardHeader]}>
+            <TextBold style={{fontSize: 18, color: '#FFFFFF'}}>Aplicativo novo, clique aqui!</TextBold>
+          </View>
+        </TouchableOpacity>
         <FlatList
           style={styles.list}
           contentContainerStyle={styles.listContainer}
@@ -135,7 +136,9 @@ const styles = StyleSheet.create({
   column: {
     width: '100%',
   },
-  container: {},
+  container: {
+    flex: 1,
+  },
   listContainer: {
     alignItems: 'center',
     paddingVertical: 6,

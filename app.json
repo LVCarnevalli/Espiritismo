@@ -7,7 +7,7 @@
       "ios",
       "android"
     ],
-    "version": "3.0.0",
+    "version": "3.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/Icon.png",
     "splash": {
@@ -28,7 +28,7 @@
     "android": {
       "package": "br.verdi.espiritismo",
       "permissions": [],
-      "versionCode": 8
+      "versionCode": 9
     },
     "extra": {
       "eas": {
