@@ -135,9 +135,7 @@ const styles = StyleSheet.create({
   column: {
     width: '100%',
   },
-  container: {
-    flex: 1,
-  },
+  container: {},
   listContainer: {
     alignItems: 'center',
     paddingVertical: 6,
