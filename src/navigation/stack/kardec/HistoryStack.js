@@ -15,7 +15,6 @@ const HistoryStack = {
     headerTitleStyle: {
       fontSize: 18,
       textAlign: 'center',
-      flex: 1,
     },
     headerRight: () => <View></View>,
   }),

@@ -6568,10 +6568,10 @@ react-native-svg@13.4.0:
     css-select "^5.1.0"
     css-tree "^1.1.3"
 
-react-native-swiper@1.6.0-dev:
-  version "1.6.0-dev"
-  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.6.0-dev.tgz#2e80d138bf9f020655ab0d8beeb78f6526326233"
-  integrity sha512-Td3rFN6JCY33kSp7ox64L4mN/rUe7BstrHygkjz+/CzwQh1FBJDdSV9wFFEtVEXNrwoNUokFmUxmYc5YVQE4eg==
+react-native-swiper@1.6.0-dev.1:
+  version "1.6.0-dev.1"
+  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.6.0-dev.1.tgz#e8fc394996129054743d157e2706f8de4be548ab"
+  integrity sha512-5+AsC6AlqjavSgPhVbFvtfY9b5mV7H8FA/BwqvzOLH23PUT2JdiVy7WyIhuQDRTVvTAgwsIf7ENLFJ6QIyrEIQ==
   dependencies:
     "@react-native-community/viewpager" "^1.1.7"
     prop-types "^15.5.10"

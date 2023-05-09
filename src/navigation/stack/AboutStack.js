@@ -17,7 +17,6 @@ const AboutStack = {
       fontSize: 35,
       fontFamily: 'grotes-sans-regular',
       textAlign: 'center',
-      flex: 1,
     },
     headerRight: () => <View></View>,
   },

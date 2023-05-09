@@ -16,7 +16,6 @@ const MenuStack = {
       fontSize: 35,
       fontFamily: 'grotes-sans-regular',
       textAlign: 'center',
-      flex: 1,
     },
     headerLeft: ()=> null,
     gestureEnabled: false,

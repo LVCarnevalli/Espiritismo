@@ -12,7 +12,6 @@ const options = ({ navigation, route }) => ({
     fontWeight: '400',
     textAlign: 'center',
     alignSelf: 'center',
-    flex: 1,
     fontSize: 18,
   },
   headerLeft: () => (

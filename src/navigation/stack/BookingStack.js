@@ -15,7 +15,6 @@ const BookingStack = {
       fontWeight: '400',
       textAlign: 'center',
       alignSelf: 'center',
-      flex: 1,
       fontSize: 18,
     },
     headerTintColor: '#fff',

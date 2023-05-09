@@ -42,7 +42,7 @@
     "react-native-screens": "^3.20.0",
     "react-native-settings-list": "^1.8.0",
     "react-native-svg": "13.4.0",
-    "react-native-swiper": "1.6.0-dev",
+    "react-native-swiper": "1.6.0-dev.1",
     "react-native-web": "~0.18.1",
     "react-navigation": "4.4.4",
     "react-navigation-stack": "^2.10.4",

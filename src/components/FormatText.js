@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons  } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -36,7 +36,7 @@ class FormatText extends React.Component {
           return (
             <View key={key} style={styles.containerCitation}>
               <View>
-                <Ionicons name="quote" size={70} color={'#D3D3D3'} />
+                <MaterialIcons name="format-quote" size={70} color={'#D3D3D3'} />
               </View>
               <View style={styles.containerTextCitation}>
                 <Text style={[this.props.style, styles.textCitation]}>{this._format(value)}</Text>

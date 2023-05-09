@@ -15,7 +15,6 @@ const BooksStack = {
     headerTitleStyle: {
       fontSize: 18,
       textAlign: 'center',
-      flex: 1,
     },
     headerRight: () => <View></View>,
   }),
