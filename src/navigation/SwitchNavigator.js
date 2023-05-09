@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import {NavigationContainer} from '@react-navigation/native';
 
 import AboutStack from './stack/AboutStack';
+import WarningStack from './stack/WarningStack';
 import BookingStack from './stack/BookingStack';
 import BooksStack from './stack/kardec/BooksStack';
 import HistoryStack from './stack/kardec/HistoryStack';
@@ -28,6 +29,7 @@ export default function() {
         <Stack.Screen name="Search" component={SearchStack.screen} options={SearchStack.navigationOptions} />
         <Stack.Screen name="Booking" component={BookingStack.screen} options={BookingStack.navigationOptions} />
         <Stack.Screen name="About" component={AboutStack.screen} options={AboutStack.navigationOptions} />
+        <Stack.Screen name="Warning" component={WarningStack.screen} options={WarningStack.navigationOptions} />
         <Stack.Screen name="Kardec" component={KardecStack.screen} options={KardecStack.navigationOptions} />
         <Stack.Screen name="History" component={HistoryStack.screen} options={HistoryStack.navigationOptions} />
         <Stack.Screen name="Books" component={BooksStack.screen} options={BooksStack.navigationOptions} />

@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { TextBold, TextNormal } from '../components/StyledText';
 import * as GoogleAnalytics from '../services/GoogleAnalytics';
 import { showLoading } from '../store/actions/GlobalAction';
+import { Button } from 'react-native-elements/dist/buttons/Button';
 
 class Menu extends React.Component {
   state = {
@@ -69,16 +70,24 @@ class Menu extends React.Component {
 
   constructor(props) {
     super(props);
-    GoogleAnalytics.pageHit('Menu');
+    GoogleAnalytics.pageHit('Warning');
   }
 
   _clickEventListener = item => {
     this.props.navigation.navigate(item.link);
   };
 
+  _clickWarning = () => {
+    this.props.navigation.navigate("Warning");
+  };
+
   render() {
     return (
       <View style={styles.container}>
+        <Button title="Aplicativo novo, clique aqui!" onPress={this._clickWarning} style={{
+          justifyContent: 'center',
+          backgroundColor: '#6638f0',
+        }} />
         <FlatList
           style={styles.list}
           contentContainerStyle={styles.listContainer}
